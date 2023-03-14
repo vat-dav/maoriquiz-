@@ -6,9 +6,13 @@
         {
             string name;
             Console.WriteLine("Welcome to my Te Reo Maori Quiz!");
-            Console.WriteLine("What is your name?");
+            Console.WriteLine("\nWhat is your name?");
             name = Console.ReadLine();
-            Console.WriteLine(name);
+
+            Console.WriteLine($"What level would you like try "+name+"\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced ?");
+
+
+
         }
     }
 }
