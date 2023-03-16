@@ -28,7 +28,8 @@ namespace maoriquiz_
 
 
 
-            Console.WriteLine($"What level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
+            Console.WriteLine($"Welcome "+ name +"!");
+            Console.WriteLine($"\nWhat level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
             string level = Console.ReadLine();
             int intnum = Convert.ToInt32(level);
 
@@ -55,10 +56,6 @@ namespace maoriquiz_
 
             }
 
-            if (intnum != 1 || intnum == 2)
-            {
-                Console.WriteLine("you have chosen an invalid number");
-            }
             
         }
 
