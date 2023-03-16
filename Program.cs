@@ -1,25 +1,39 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 namespace maoriquiz_
 {
     internal class Program
     {
+        static string name;
         static void Main(string[] args)
         {
-            string name;
-            int intnum;
+
+           
 
             Console.WriteLine("Welcome to my Te Reo Maori Quiz!");
             Console.WriteLine("\nWhat is your name?");
             name = Console.ReadLine();
 
-            int num = 0;
+
             Console.Clear();
 
-            Console.WriteLine($"What level would you like try "+name+"?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
-            string strnum = Console.ReadLine();
-            
-            intnum = Convert.ToInt32(strnum);
+            mainmenu();
+
+
+        }
+        static void mainmenu()
+        {
+
+
+
+
+            Console.WriteLine($"What level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
+            string level = Console.ReadLine();
+            int intnum = Convert.ToInt32(level);
+
+
+
 
             if (intnum == 1)
             {
@@ -31,42 +45,47 @@ namespace maoriquiz_
 
             {
                 Intermediate();
-            
+
             }
-            
+
             if (intnum == 3)
 
             {
                 Advanced();
-            
+
             }
 
-
-
-
-
-
-
-
-
-
-            static void Beginner()
+            if (intnum != 1 || intnum == 2)
             {
-               
-
+                Console.WriteLine("you have chosen an invalid number");
             }
             
-            static void Intermediate()
-            {
-
-
-            }
-            
-            static void Advanced()
-            {
-
-
-            }
         }
+
+             
+
+
+
+
+        static void Beginner()
+        {
+            Console.Clear();
+            Console.WriteLine("you have chosen the Beginner level!");
+
+        }
+
+        static void Intermediate()
+        {
+            Console.Clear();
+            Console.WriteLine("you have chosen the Intermediate level!");
+
+        }
+
+        static void Advanced()
+        {
+            Console.Clear();
+            Console.WriteLine("you have chosen the Advanced level!");
+        }
+
     }
 }
