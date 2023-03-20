@@ -5,7 +5,7 @@ namespace maoriquiz_
 {
     internal class Program
     {
-        static string name;
+        static string name, mark ;
         static void Main(string[] args)
         {
 
@@ -25,17 +25,12 @@ namespace maoriquiz_
         static void mainmenu()
         {
 
-
-
-
-            Console.WriteLine($"Welcome "+ name +"!");
+            Console.WriteLine($"Welcome " + name + "!");
             Console.WriteLine($"\nWhat level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
             string level = Console.ReadLine();
             int intnum = Convert.ToInt32(level);
-
-
-
-
+        
+       
             if (intnum == 1)
             {
                 Beginner();
@@ -55,20 +50,14 @@ namespace maoriquiz_
                 Advanced();
 
             }
-
             
         }
-
-             
-
-
-
-
         static void Beginner()
         {
             Console.Clear();
             Console.WriteLine("you have chosen the Beginner level!");
 
+            BeginnerQuestions();
         }
 
         static void Intermediate()
@@ -76,13 +65,20 @@ namespace maoriquiz_
             Console.Clear();
             Console.WriteLine("you have chosen the Intermediate level!");
 
+
         }
 
         static void Advanced()
         {
             Console.Clear();
             Console.WriteLine("you have chosen the Advanced level!");
+        
         }
 
+        static void BeginnerQuestions()
+        {
+            Console.WriteLine("\nQ1.) What is love in Te Reo Maori?");
+        
+        }
     }
 }
