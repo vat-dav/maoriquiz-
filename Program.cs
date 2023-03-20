@@ -77,7 +77,19 @@ namespace maoriquiz_
 
         static void BeginnerQuestions()
         {
-            Console.WriteLine("\nQ1.) What is love in Te Reo Maori?");
+            string[] answers = {"aroha","kakariki","enoho", "awa",  };
+            string[] questions = {"\nQ1. What is love in Te Reo Maori?", 
+                                  "\nQ2. What is green in Te Reo Maori?", 
+                                  "\nQ3. What does the phrase 'sit down' mean in Te Reo Maori", 
+                                  "\nQ4. What is river in Te Reo Maori?",
+                                  "\nQ5. What is the name of the popular Maori dance (war cry) that rugby players do before they start their game?"};
+
+            Console.WriteLine(questions[0]);
+            Console.WriteLine(questions[1]);
+            Console.WriteLine(questions[2]);
+            Console.WriteLine(questions[3]);
+            Console.WriteLine(questions[4]);
+            Console.WriteLine(questions[5]);
         
         }
     }
