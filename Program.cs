@@ -77,7 +77,7 @@ namespace maoriquiz_
 
         static void BeginnerQuestions()
         {
-            string[] answers = {"aroha","kakariki","enoho", "awa", "haka", "waka", "pango or mango", "maunga","papa", "whaea"};
+            string[] answers = {"a","b kakariki","a enoho", "c awa", "d haka", "a waka", "c and dpango or mango", "b maunga","a papa", "c whaea"};
 
             string[] questions = 
                 
@@ -94,9 +94,21 @@ namespace maoriquiz_
 
 
             Console.WriteLine(questions[0]);
-            Console.ReadLine();
+            string uanswers = Console.ReadLine();
 
-            if Console.ReadLine()= answers[1];
+            for (int i = 1; i < length; i++)
+            {
+                if (uanswers == answers[0])
+                {
+                    Console.WriteLine("your right");
+
+                }
+                else
+                {
+                    Console.WriteLine("your dumb");
+                }
+            }
+           
 
             Console.WriteLine(questions[1]);
             Console.ReadLine();
