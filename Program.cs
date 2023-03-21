@@ -77,26 +77,28 @@ namespace maoriquiz_
 
         static void BeginnerQuestions()
         {
+            int[] n = new int[10];
             string[] answers = {"a","b kakariki","a enoho", "c awa", "d haka", "a waka", "c and dpango or mango", "b maunga","a papa", "c whaea"};
 
             string[] questions = 
                 
-               {"\nQ1. What is 'love' in Te Reo Maori?",
-                "\nQ2. What is 'green' in Te Reo Maori?",
-                "\nQ3. What is the phrase 'sit down' in Te Reo Maori?",
-                "\nQ4. What is 'river' in Te Reo Maori?",
-                "\nQ5. What is the name of the popular Maori dance that rugby players do before they start their game?",
-                "\nQ6. What is the word for 'boat' in Te Reo Maori?",
-                "\nQ7. What is the colour 'black' in Te Reo Maori?",
-                "\nQ8. What is 'mountain' in Te Reo Maori?",
-                "\nQ9. What is 'father' in Te Reo Maori?",
-                "\nQ10. What is 'mother' in Te Reo Maori?"};
+               {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa",
+                "Q2. What is 'green' in Te Reo Maori?",
+                "Q3. What is the phrase 'sit down' in Te Reo Maori?",
+                "Q4. What is 'river' in Te Reo Maori?",
+                "Q5. What is the name of the popular Maori dance that rugby players do before they start their game?",
+                "Q6. What is the word for 'boat' in Te Reo Maori?",
+                "Q7. What is the colour 'black' in Te Reo Maori?",
+                "Q8. What is 'mountain' in Te Reo Maori?",
+                "Q9. What is 'father' in Te Reo Maori?",
+                "Q10. What is 'mother' in Te Reo Maori?"};
 
+            Console.Clear();
 
             Console.WriteLine(questions[0]);
             string uanswers = Console.ReadLine();
 
-            for (int i = 1; i < length; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 if (uanswers == answers[0])
                 {
@@ -105,10 +107,14 @@ namespace maoriquiz_
                 }
                 else
                 {
-                    Console.WriteLine("your dumb");
+                    Console.WriteLine("you're wrong, would you like to try again? (press f to try again)");
+                    
+
+                  
+                    Console.WriteLine(questions[0]);
                 }
             }
-           
+            
 
             Console.WriteLine(questions[1]);
             Console.ReadLine();
