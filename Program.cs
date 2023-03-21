@@ -65,14 +65,15 @@ namespace maoriquiz_
             Console.Clear();
             Console.WriteLine("you have chosen the Intermediate level!");
 
-
+            IntermediateQuestions();
         }
 
         static void Advanced()
         {
             Console.Clear();
             Console.WriteLine("you have chosen the Advanced level!");
-        
+
+            AdvancedQuestions();
         }
 
         static void BeginnerQuestions()
@@ -98,53 +99,51 @@ namespace maoriquiz_
             Console.WriteLine(questions[0]);
             string uanswers = Console.ReadLine();
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= questions.Length; i++)
             {
-                if (uanswers == answers[0])
+                if (uanswers == answers[i])
                 {
                     Console.WriteLine("your right");
 
                 }
                 else
                 {
-                    Console.WriteLine("you're wrong, would you like to try again? (press f to try again)");
-                    if Console.ReadLine('f');
+                    Console.WriteLine("you're wrong");
 
-                  
-                    Console.WriteLine(questions[0]);
+
                 }
             }
-            
 
-            Console.WriteLine(questions[1]);
-            Console.ReadLine();
+            static void IntermediateQuestions()
+            {
+                int[] n = new int[10];
+                string[] answers = { "", "", "", "", "", "", "", "", "", "" };
 
-            Console.WriteLine(questions[2]);
-            Console.ReadLine();
+                string[] questions =
 
-            Console.WriteLine(questions[3]);
-            Console.ReadLine();
+                   {"Q1. How do you say 'i love you' in Te Reo Maori?\n\na.) aroha ahau ki a koe\r\n\nb.) tangata ahau ki a koe\r\n\nc.) manaki aroha ahau koe\nd.) aroha ana ahau ki toku whanau\r\n",
+                "Q2. What is 'green' in Te Reo Maori?",
+                "Q3. What is the phrase 'sit down' in Te Reo Maori?",
+                "Q4. What is 'river' in Te Reo Maori?",
+                "Q5. What is the name of the popular Maori dance that rugby players do before they start their game?",
+                "Q6. What is the word for 'boat' in Te Reo Maori?",
+                "Q7. What is the colour 'black' in Te Reo Maori?",
+                "Q8. What is 'mountain' in Te Reo Maori?",
+                "Q9. What is 'father' in Te Reo Maori?",
+                "Q10. What is 'mother' in Te Reo Maori?"};
 
-            Console.WriteLine(questions[4]);
-            Console.ReadLine();
+                Console.Clear();
 
-            Console.WriteLine(questions[5]);
-            Console.ReadLine();
+                Console.WriteLine(questions[0]);
+                string uanswers = Console.ReadLine();
 
-            Console.WriteLine(questions[6]);    
-            Console.ReadLine();
+            }
 
-            Console.WriteLine(questions[7]);
-            Console.ReadLine();
+            static void AdvancedQuestions()
+            {
+                Console.WriteLine("");
 
-            Console.WriteLine(questions[8]);
-            Console.ReadLine();
-
-            Console.WriteLine(questions[9]);
-            Console.ReadLine();
-
-            Console.WriteLine(questions[10]);
-            Console.ReadLine();
+            }
 
         }
     }
