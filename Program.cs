@@ -108,7 +108,7 @@ namespace maoriquiz_
                 else
                 {
                     Console.WriteLine("you're wrong, would you like to try again? (press f to try again)");
-                    
+                    if Console.ReadLine('f');
 
                   
                     Console.WriteLine(questions[0]);
