@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 
 namespace maoriquiz_
 {
@@ -8,31 +9,39 @@ namespace maoriquiz_
         static string name, mark;
         static void Main(string[] args)
         {
-
-
-
+            Beginner();
+            //welcoming user to quiz
             Console.WriteLine("Welcome to my Te Reo Maori Quiz!");
+
+            //prompts user for name
             Console.WriteLine("\nWhat is your name?");
             name = Console.ReadLine();
 
-
+            //clears console visually
             Console.Clear();
 
+            //navigates to mainmenu method
             mainmenu();
 
 
         }
         static void mainmenu()
         {
-
+            //welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + name + "!");
-            Console.WriteLine($"\nWhat level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced");
-            string level = Console.ReadLine();
-            int intnum = Convert.ToInt32(level);
 
+            //asks user for what level they would like to try
+            Console.WriteLine($"\nWhat level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced\n");
+            string level = Console.ReadLine();
+
+
+            //converts string to int
+            int intnum = Convert.ToInt32(level);
+            int[] n = new int[10];
 
             if (intnum == 1)
             {
+                //navigates to beginner level
                 Beginner();
 
             }
@@ -40,6 +49,7 @@ namespace maoriquiz_
             else if (intnum == 2)
 
             {
+                //navigates to intermediate level
                 Intermediate();
 
             }
@@ -47,6 +57,7 @@ namespace maoriquiz_
             if (intnum == 3)
 
             {
+                //navigates to advanced level
                 Advanced();
 
             }
@@ -54,12 +65,22 @@ namespace maoriquiz_
         }
         static void Beginner()
         {
-            Console.Clear();
-            Console.WriteLine("you have chosen the Beginner level!");
+            //clears console visually
+            //Console.Clear();
 
+            //informs the viewer they have chosen the beginner level
+            Console.WriteLine("you have chosen the Beginner level!\n");
+
+            
             int[] n = new int[10];
-            string[] answers = { "a", "b kakariki", "a enoho", "c awa", "d haka", "a waka", "c and dpango or mango", "b maunga", "a papa", "c whaea" };
 
+            //array for answers worded answers for reference (may delete later)
+            string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mango", "maunga", "papa", "whaea" };
+
+            //array for letter answers
+            string[] letteranswers = { "a", "b", "a", "c", "d", "a", "c", "b", "a", "c" };
+
+            //array for questions
             string[] questions =
 
                {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa",
@@ -73,48 +94,72 @@ namespace maoriquiz_
                 "Q9. What is 'father' in Te Reo Maori?",
                 "Q10. What is 'mother' in Te Reo Maori?"};
 
-            Console.Clear();
+            //clears console visually
+           // Console.Clear();
 
-            Console.WriteLine(questions[0]);
-            string uanswers = Console.ReadLine();
-
+            //begins loop for beginner questions
             for (int i = 0; i < questions.Length; i++)
             {
-                if (uanswers == answers[i])
+                Console.WriteLine(questions[i]);
+                letteranswers[i] = Console.ReadLine();
+                Console.WriteLine("you entered" +  letteranswers[i]);
+
+                //if answer is correct as per parallel array, then prompts user saying that they are correct
+                Console.WriteLine(answers[i]);
+                if ( letteranswers[i] == letteranswers[i] )
                 {
-                    Console.WriteLine("your right");
+                    Console.WriteLine("congratulations! you're right :)");
 
                 }
+
+                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
-                    Console.WriteLine("you're wrong");
+                    Console.WriteLine("oh no! you're wrong :(");
 
 
-                }//end of level method
+                    //end of level method 101-117
+                }
+               
+
+
+
 
             }
         }
 
         static void Intermediate()
         {
+            //clears console visually
             Console.Clear();
+
+            //informs the viewer that they have chosen the intermediate level
             Console.WriteLine("you have chosen the Intermediate level!");
 
         }
 
         static void Advanced()
         {
+            //clears console visually
             Console.Clear();
+
+            //informs the viewer that they have chosen the advanced level
             Console.WriteLine("you have chosen the Advanced level!");
 
         }
     }
 }
 
-           
-                
 
-         
 
-        
+
+
+
+
+
+
+
+ 
+ //sjhdj
     
+
