@@ -1,20 +1,24 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace maoriquiz_
 {
     internal class Program
     {
-        static string name, mark;
+        static string name, points;
         static void Main(string[] args)
         {
-        
+            string s2_uni = "\u263A"; // unicode code for s2
+
+
             //welcoming user to quiz
-            Console.WriteLine("Welcome to my Te Reo Maori Quiz!");
+            Console.WriteLine($"Welcome to my Te Reo Maori Quiz " + s2_uni + " !");
 
             //prompts user for name
-            Console.WriteLine("\nWhat is your name?");
+            Console.WriteLine("\nWhat is your name?\n");
             name = Console.ReadLine();
 
             //clears console visually
@@ -22,7 +26,6 @@ namespace maoriquiz_
 
             //navigates to mainmenu method
             mainmenu();
-
 
         }
         static void mainmenu()
@@ -64,29 +67,6 @@ namespace maoriquiz_
 
         }
 
-        private static void Advanced()
-        {
-            throw new NotImplementedException();
-            
-            //clears console visually
-            Console.Clear();
-
-            //informs the viewer that they have chosen the advanced level
-            Console.WriteLine("you have chosen the Advanced level!");
-
-        }
-
-        private static void Intermediate()
-        {
-            throw new NotImplementedException();
-            
-            //clears console visually
-            Console.Clear();
-
-            //informs the viewer that they have chosen the intermediate level
-            Console.WriteLine("you have chosen the Intermediate level!");
-
-        }
 
         static void Beginner()
         {
@@ -124,43 +104,67 @@ namespace maoriquiz_
 
             for (int i = 0; i < questions.Length; i++)
             {
+                //clears console visually
+                Console.Clear();
+
+                //displays the question from the array
                 Console.WriteLine(questions[i]);
 
+                //reads what the user inputted
                 letteranswers[i] = Console.ReadLine();
-                Console.WriteLine("you entered" + letteranswers[i]);
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
-                
                 if (letteranswers[i] == letteranswers[i])
                 {
-                    Console.WriteLine("congratulations! you're right :)");
+                    Console.WriteLine("\ncongratulations! you're right :)");
 
+                    
                 }
 
                 //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
-                    Console.WriteLine("oh no! you're wrong :(");
+                    Console.WriteLine("\noh no! you're wrong :(");
 
+                    
+
+                    Console.WriteLine(points);
 
                     //end of level method
                 }
-
             }
         }
 
+        static void Intermediate()
+        {
+
+        //clears console visually
+        Console.Clear();
+
+        //informs the viewer that they have chosen the intermediate level
+        Console.WriteLine("you have chosen the Intermediate level!");
+
+        //end of level method
+        }
+
+
+        static void Advanced()
+        {
+
+        //clears console visually
+        Console.Clear();
+
+        //informs the viewer that they have chosen the advanced level
+        Console.WriteLine("you have chosen the Advanced level!");
+
+        }
+
+
+
+        }
     }
-}
 
 
 
-
-
-
-
-
-
- 
- //sjhdj
     
 
