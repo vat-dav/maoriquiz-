@@ -9,7 +9,7 @@ namespace maoriquiz_
         static string name, mark;
         static void Main(string[] args)
         {
-            Beginner();
+        
             //welcoming user to quiz
             Console.WriteLine("Welcome to my Te Reo Maori Quiz!");
 
@@ -37,7 +37,7 @@ namespace maoriquiz_
 
             //converts string to int
             int intnum = Convert.ToInt32(level);
-            int[] n = new int[10];
+
 
             if (intnum == 1)
             {
@@ -63,16 +63,41 @@ namespace maoriquiz_
             }
 
         }
+
+        private static void Advanced()
+        {
+            throw new NotImplementedException();
+            
+            //clears console visually
+            Console.Clear();
+
+            //informs the viewer that they have chosen the advanced level
+            Console.WriteLine("you have chosen the Advanced level!");
+
+        }
+
+        private static void Intermediate()
+        {
+            throw new NotImplementedException();
+            
+            //clears console visually
+            Console.Clear();
+
+            //informs the viewer that they have chosen the intermediate level
+            Console.WriteLine("you have chosen the Intermediate level!");
+
+        }
+
         static void Beginner()
         {
             //clears console visually
-            //Console.Clear();
+            Console.Clear();
 
             //informs the viewer they have chosen the beginner level
             Console.WriteLine("you have chosen the Beginner level!\n");
 
-            
-            int[] n = new int[10];
+
+
 
             //array for answers worded answers for reference (may delete later)
             string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mango", "maunga", "papa", "whaea" };
@@ -94,19 +119,19 @@ namespace maoriquiz_
                 "Q9. What is 'father' in Te Reo Maori?",
                 "Q10. What is 'mother' in Te Reo Maori?"};
 
-            //clears console visually
-           // Console.Clear();
 
             //begins loop for beginner questions
+
             for (int i = 0; i < questions.Length; i++)
             {
                 Console.WriteLine(questions[i]);
+
                 letteranswers[i] = Console.ReadLine();
-                Console.WriteLine("you entered" +  letteranswers[i]);
+                Console.WriteLine("you entered" + letteranswers[i]);
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
-                Console.WriteLine(answers[i]);
-                if ( letteranswers[i] == letteranswers[i] )
+                
+                if (letteranswers[i] == letteranswers[i])
                 {
                     Console.WriteLine("congratulations! you're right :)");
 
@@ -118,38 +143,14 @@ namespace maoriquiz_
                     Console.WriteLine("oh no! you're wrong :(");
 
 
-                    //end of level method 101-117
+                    //end of level method
                 }
-               
-
-
-
 
             }
         }
 
-        static void Intermediate()
-        {
-            //clears console visually
-            Console.Clear();
-
-            //informs the viewer that they have chosen the intermediate level
-            Console.WriteLine("you have chosen the Intermediate level!");
-
-        }
-
-        static void Advanced()
-        {
-            //clears console visually
-            Console.Clear();
-
-            //informs the viewer that they have chosen the advanced level
-            Console.WriteLine("you have chosen the Advanced level!");
-
-        }
     }
 }
-
 
 
 
