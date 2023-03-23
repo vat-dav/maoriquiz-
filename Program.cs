@@ -88,22 +88,16 @@ namespace maoriquiz_
             //array for questions
             string[] questions =
 
-               {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa",
-                "Q2. What is 'green' in Te Reo Maori?",
-                "Q3. What is the phrase 'sit down' in Te Reo Maori?",
-                "Q4. What is 'river' in Te Reo Maori?",
-                "Q5. What is the name of the popular Maori dance that rugby players do before they start their game?",
-                "Q6. What is the word for 'boat' in Te Reo Maori?",
-                "Q7. What is the colour 'black' in Te Reo Maori?",
-                "Q8. What is 'mountain' in Te Reo Maori?",
-                "Q9. What is 'father' in Te Reo Maori?",
-                "Q10. What is 'mother' in Te Reo Maori?"};
+               {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa","Q2. What is 'green' in Te Reo Maori?","Q3. What is the phrase 'sit down' in Te Reo Maori?","Q4. What is 'river' in Te Reo Maori?","Q5. What is the name of the popular Maori dance that rugby players do before they start their game?","Q6. What is the word for 'boat' in Te Reo Maori?","Q7. What is the colour 'black' in Te Reo Maori?","Q8. What is 'mountain' in Te Reo Maori?","Q9. What is 'father' in Te Reo Maori?","Q10. What is 'mother' in Te Reo Maori?"};
 
 
             //begins loop for beginner questions
 
             for (int i = 0; i < questions.Length; i++)
             {
+                //gives user time to read console info
+                Thread.Sleep(2000);
+                
                 //clears console visually
                 Console.Clear();
 
@@ -116,25 +110,33 @@ namespace maoriquiz_
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (letteranswers[i] == letteranswers[i])
                 {
-                    Console.WriteLine("\ncongratulations! you're right :)");
-
                     
+                    Console.WriteLine("\ncongratulations! you're right :)");
+                    
+                    //displays points for user
+                    Console.WriteLine(points);
+
+                    //gives user time to read console info
+                    Thread.Sleep(1500);
                 }
 
                 //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
                     Console.WriteLine("\noh no! you're wrong :(");
+                    
+                    //displays points for user
+                    Console.WriteLine(points);
+                    
+                    //gives user time to read console info
+                    Thread.Sleep(1500);
 
                     
-
-                    Console.WriteLine(points);
 
                     //end of level method
                 }
             }
         }
-
         static void Intermediate()
         {
 
