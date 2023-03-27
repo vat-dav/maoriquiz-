@@ -77,18 +77,18 @@ namespace maoriquiz_
             Console.WriteLine("you have chosen the Beginner level!\n");
 
 
-
+            
 
             //array for answers worded answers for reference (may delete later)
-            string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mango", "maunga", "papa", "whaea" };
+            string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mangu", "maunga", "papa", "whaea" };
 
             //array for letter answers
-            string[] letteranswers = { "a", "b", "a", "c", "d", "a", "c", "b", "a", "c" };
+            string[] letteranswers = { "a", "b", "a", "c", "d", "a", "a", "b", "a", "d" };
 
             //array for questions
             string[] questions =
 
-               {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa","Q2. What is 'green' in Te Reo Maori?","Q3. What is the phrase 'sit down' in Te Reo Maori?","Q4. What is 'river' in Te Reo Maori?","Q5. What is the name of the popular Maori dance that rugby players do before they start their game?","Q6. What is the word for 'boat' in Te Reo Maori?","Q7. What is the colour 'black' in Te Reo Maori?","Q8. What is 'mountain' in Te Reo Maori?","Q9. What is 'father' in Te Reo Maori?","Q10. What is 'mother' in Te Reo Maori?"};
+               {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa","Q2. What is 'green' in Te Reo Maori?\n\na.) Pango\nb.) Kakariki\nc.) Whero\nd.) Kowhai","Q3. What is the phrase 'sit down' in Te Reo Maori?\n\na.) Enoho\nb.) Tu ki runga\nc.) Haere Ra\nd.) Haera Mai","Q4. What is 'river' in Te Reo Maori?\n\na.) Waka\nb.) Maunga\nc.) Awa\nd.) Maka","Q5. What is the name of the popular Maori dance that rugby players do before they start their game?\n\na.) Mala\nb.) Kaka\nc.) Waka\nd.) Haka","Q6. What is the word for 'boat' in Te Reo Maori?\n\na.) Waka\nb.) Haka\nc.) Kikorangi\nd.) Kaka","Q7. What is the colour 'black' in Te Reo Maori?\n\na.) Pango\nb.) Kikorangi\nc.) Mango\nd.) Kowhai","Q8. What is 'mountain' in Te Reo Maori?\n\na.) Awa\nb.) Maunga\nc.) Waka\nd.) Maka","Q9. What is 'father' in Te Reo Maori?\n\na.) Papa\nb.) Kaka\nc.) Mama\nd.) Whaea","Q10. What is 'mother' in Te Reo Maori?\n\na.) Maui\nb.) Ma\nc.) Mama\nd.) Whaea"};
 
 
             //begins loop for beginner questions
@@ -102,34 +102,40 @@ namespace maoriquiz_
                 Console.Clear();
 
                 //displays the question from the array
-                Console.WriteLine(questions[i]);
+                Console.WriteLine(questions[i]+"\n");
 
                 //reads what the user inputted
-                letteranswers[i] = Console.ReadLine();
+                
+                Console.ReadLine();
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (letteranswers[i] == letteranswers[i])
                 {
+                    int points = +1;
+
                     
+                    //displays that user is correct
                     Console.WriteLine("\ncongratulations! you're right :)");
-                    
+
                     //displays points for user
-                    Console.WriteLine(points);
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
 
                     //gives user time to read console info
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                 }
 
                 //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
                     Console.WriteLine("\noh no! you're wrong :(");
-                    
+
+                    int points = +0;
+
                     //displays points for user
-                    Console.WriteLine(points);
-                    
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
+
                     //gives user time to read console info
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
 
                     
 
