@@ -10,7 +10,7 @@ namespace maoriquiz_
 {
     internal class Program
     {
-        static string name;
+       
         static int points;
         static void Main(string[] args)
         {
@@ -18,20 +18,23 @@ namespace maoriquiz_
 
 
             //welcoming user to quiz
-            Console.WriteLine($"Welcome to my Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) answer using the associated key.\n\nEnjoy" + s2_uni + " !");
+            Console.WriteLine($"Welcome to my Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key.\n\nEnjoy" + s2_uni + " !");
+
+            //gives user time to process information slowly
+            Thread.Sleep(1500);
 
             //prompts user for name
             Console.WriteLine("\nWhat is your name?\n");
-            name = Console.ReadLine();
+            string name = Console.ReadLine();
 
             //clears console visually 
             Console.Clear();
 
             //navigates to mainmenu method
-            mainmenu();
+            mainmenu(name);
 
         }
-        static void mainmenu()
+        static void mainmenu(string name)
         {
             //welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + name + "!");
@@ -134,8 +137,23 @@ namespace maoriquiz_
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
+                    string redoquizans;
                     Console.WriteLine("would you like to redo quiz?\n\na.) yes b.)no");
-                    //string y
+                    redoquizans = Console.ReadLine().ToLower();
+                    if (redoquizans == "a") ;
+                    {
+                        string name;
+                        //mainmenu(name);
+                        //Console.WriteLine($"wjwjwj"+name");
+
+                    }
+                    if (redoquizans == "b");
+                    {
+                        Console.WriteLine("thank you for playing Vatsal's Te Reo Maori Quiz!");
+
+                    }
+
+
 
                     //end of level method
 
@@ -287,7 +305,7 @@ namespace maoriquiz_
 
                 }
 
-                static void redo(string level)
+                /*static void redo(string level)
                 {
                     Console.WriteLine("do you want to redo level?\n\nif yes, type 'Y'");
                     string redoans = Console.ReadLine().ToUpper();
@@ -317,15 +335,14 @@ namespace maoriquiz_
                     else
                     {
                         Console.WriteLine("good bye");
-                        return;
+                        return; */
                     }
                 }
 
 
             }
         }
-    }
-}
+   
     
 
 
