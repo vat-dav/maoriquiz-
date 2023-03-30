@@ -18,7 +18,7 @@ namespace maoriquiz_
 
 
             //welcoming user to quiz
-            Console.WriteLine($"Welcome to my Te Reo Maori Quiz " + s2_uni + " !");
+            Console.WriteLine($"Welcome to my Te Reo Maori Quiz" + s2_uni + " !");
 
             //prompts user for name
             Console.WriteLine("\nWhat is your name?\n");
@@ -213,38 +213,92 @@ namespace maoriquiz_
                         //displays points for user
                         Console.WriteLine("\nyour current score is:" + points + "/10");
 
-                        //gives user time to read console info
-                        Thread.Sleep(1000);
-
-
-
-                        //end of level method
+                    //gives user time to read console info
+                    Thread.Sleep(1000);
 
                         //end of level method
                     }
 
                 }
-            Console.WriteLine("HI");
-                  redo("beg");
+                 
+             //redo("beg");
 
             }
 
 
                 static void Advanced()
                 {
+            //clears console visually
+            Console.Clear();
 
-                    //clears console visually
-                    Console.Clear();
+            //informs the viewer that they have chosen the advanced level
+            Console.WriteLine("you have chosen the Advanced level!");
 
-                    //informs the viewer that they have chosen the advanced level
-                     
+            //array for answers worded answers for reference (may delete later)
+            string[] answers = { "People of the land", "Rekohu", "Matariki", "Guardianship or Stewardship", "Te Moana-o-Kupe", "Song or chant", "Piopiotahi", "Kakapo", "Kā Tiritiri-o-te-Moana", "Spirit or soul" };
+
+            //array for letter answers
+            string[] letteranswers = { "a", "c", "a", "a", "d", "a", "a", "a", "d", "a" };
+
+            //array for questions
+            string[] questions =
+
+            {"Q1.) What does the word 'tangata whenua' mean in te reo Māori?\na.) People of the land\nb.) People of the sea\nc.) People of the sky\nd.) People of the mountain\n","Q2.) What is the Māori name for the Chatham Islands?\na.) Rangitoto\nb.) Whakaari\nc.) Rekohu\nd.) Motiti\n","Q3.) What is the Māori name for the Pleiades star cluster?\na.) Matariki\nb.) Puanga\nc.) Atutahi\nd.) Te Poutū-te-rangi\n","Q4.) What does the word 'kaitiakitanga' mean in te reo Māori?\na.) Guardianship or stewardship\nb.) Leadership or authority\nc.) Harmony or balance\nd.) Respect or reverence\n","Q5.) What is the Māori name for the Cook Strait?\na.) Te Tai-o-Rehua\nb.) Te Moana-nui-a-Toi\nc.) Te Moana-o-Raukawa\nd.) Te Moana-o-Kupe\n","Q6.) What does the word 'waiata' mean in te reo Māori?\na.) Song or chant\nb.) Dance or performance\nc.) Story or legend\nd.) Art or craft\n","Q7.) What is the Māori name for the Milford Sound?\na.) Piopiotahi\nb.) Whangaparapara\nc.) Ohiwa\nd.) Aotea\n","Q8.) What colour is the 'kakapo' bird in te reo Māori?\na.) Kakariki\nb.) Kikorangi\nc.) Pango\nd.) Kowhai\n","Q9.) What is the Māori name for the Southern Alps?\na.) Kaimai Range\nb.) Tararua Range\nc.) Kaikoura Range\nd.) Kā Tiritiri-o-te-Moana\n","Q10.) What does the word \"wairua\" mean in te reo Māori?\na.) Spirit or soul\nb.) Mind or consciousness\nc.) Heart or emotion\nd.) Breath or life force\n"};
+
+
+            //begins loop for beginner questions
+
+            for (int i = 0; i < questions.Length; i++)
+            {
+                //gives user time to read console info
+                Thread.Sleep(2000);
+
+                //clears console visually
+                Console.Clear();
+
+                //displays the question from the array
+                Console.WriteLine(questions[i] + "\n");
+
+                //reads what the user inputted
+
+                string useranswers1 = Console.ReadLine().ToLower();
+
+
+                //if answer is correct as per parallel array, then prompts user saying that they are correct
+                if (useranswers1 == letteranswers[i])
+                {
+
+                    points++;
+
+                    //displays that user is correct
+                    Console.WriteLine("\ncongratulations! you're right :)");
+
+                    //displays points for user
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
+
+                    //gives user time to read console info
+                    Thread.Sleep(1000);
+                }
+
+                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                else
+                {
+                    Console.WriteLine("\noh no! you're wrong :(");
+
+
+                    //displays points for user
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
+
+                    //gives user time to read console info
+                    Thread.Sleep(1000);
+
 
                 }
 
                 static void redo(string level)
                 {
-                    Console.WriteLine("do you want to redo level");
-                    string redoans = Console.ReadLine();
+                    Console.WriteLine("do you want to redo level?\n\nif yes, type 'Y'");
+                    string redoans = Console.ReadLine().ToUpper();
 
                     if( redoans =="Y")
 
