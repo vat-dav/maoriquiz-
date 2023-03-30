@@ -18,7 +18,7 @@ namespace maoriquiz_
 
 
             //welcoming user to quiz
-            Console.WriteLine($"Welcome to my Te Reo Maori Quiz" + s2_uni + " !");
+            Console.WriteLine($"Welcome to my Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) answer using the associated key.\n\nEnjoy" + s2_uni + " !");
 
             //prompts user for name
             Console.WriteLine("\nWhat is your name?\n");
