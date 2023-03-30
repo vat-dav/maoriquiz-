@@ -79,10 +79,6 @@ namespace maoriquiz_
             //informs the viewer they have chosen the beginner level
             Console.WriteLine("you have chosen the Beginner level!\n");
 
-
-            //array for answers worded answers for reference (may delete later)
-            string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mangu", "maunga", "papa", "whaea" };
-
             //array for letter answers
             string[] letteranswers = { "a", "b", "a", "c", "d", "a", "a", "b", "a", "d" };
 
@@ -138,6 +134,8 @@ namespace maoriquiz_
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
+                    Console.WriteLine("would you like to redo quiz?\n\na.) yes b.)no");
+                    //string y
 
                     //end of level method
 
@@ -154,9 +152,7 @@ namespace maoriquiz_
             //informs the viewer that they have chosen the intermediate level
             Console.WriteLine("you have chosen the Intermediate level!");
 
-            //array for answers worded answers for reference (may delete later)
-            string[] answers = { "To try", "Hello and Welcome", "Aoraki", "Family tree or genealogy", "Tautoru", "To eat", "Kereru", "Song", "Hello or thank you", "Marae" };
-
+        
             //array for letter answers
             string[] letteranswers = { "a", "a", "b", "a", "b", "b", "c", "a", "a", "a" };
 
@@ -239,7 +235,7 @@ namespace maoriquiz_
             //array for questions
             string[] questions =
 
-            {"Q1.) What does the word 'tangata whenua' mean in te reo Māori?\na.) People of the land\nb.) People of the sea\nc.) People of the sky\nd.) People of the mountain\n","Q2.) What is the Māori name for the Chatham Islands?\na.) Rangitoto\nb.) Whakaari\nc.) Rekohu\nd.) Motiti\n","Q3.) What is the Māori name for the Pleiades star cluster?\na.) Matariki\nb.) Puanga\nc.) Atutahi\nd.) Te Poutū-te-rangi\n","Q4.) What does the word 'kaitiakitanga' mean in te reo Māori?\na.) Guardianship or stewardship\nb.) Leadership or authority\nc.) Harmony or balance\nd.) Respect or reverence\n","Q5.) What is the Māori name for the Cook Strait?\na.) Te Tai-o-Rehua\nb.) Te Moana-nui-a-Toi\nc.) Te Moana-o-Raukawa\nd.) Te Moana-o-Kupe\n","Q6.) What does the word 'waiata' mean in te reo Māori?\na.) Song or chant\nb.) Dance or performance\nc.) Story or legend\nd.) Art or craft\n","Q7.) What is the Māori name for the Milford Sound?\na.) Piopiotahi\nb.) Whangaparapara\nc.) Ohiwa\nd.) Aotea\n","Q8.) What colour is the 'kakapo' bird in te reo Māori?\na.) Kakariki\nb.) Kikorangi\nc.) Pango\nd.) Kowhai\n","Q9.) What is the Māori name for the Southern Alps?\na.) Kaimai Range\nb.) Tararua Range\nc.) Kaikoura Range\nd.) Kā Tiritiri-o-te-Moana\n","Q10.) What does the word \"wairua\" mean in te reo Māori?\na.) Spirit or soul\nb.) Mind or consciousness\nc.) Heart or emotion\nd.) Breath or life force\n"};
+            {"Q1.) What does the word 'tangata whenua' mean in te reo Māori?\n\na.) People of the land\nb.) People of the sea\nc.) People of the sky\nd.) People of the mountain\n","Q2.) What is the Māori name for the Chatham Islands?\n\na.) Rangitoto\nb.) Whakaari\nc.) Rekohu\nd.) Motiti\n","Q3.) What is the Māori name for the Pleiades star cluster?\n\na.) Matariki\nb.) Puanga\nc.) Atutahi\nd.) Te Poutū-te-rangi\n","Q4.) What does the word 'kaitiakitanga' mean in te reo Māori?\n\na.) Guardianship or stewardship\nb.) Leadership or authority\nc.) Harmony or balance\nd.) Respect or reverence\n","Q5.) What is the Māori name for the Cook Strait?\n\na.) Te Tai-o-Rehua\nb.) Te Moana-nui-a-Toi\nc.) Te Moana-o-Raukawa\nd.) Te Moana-o-Kupe\n","Q6.) What does the word 'waiata' mean in te reo Māori?\n\na.) Song or chant\nb.) Dance or performance\nc.) Story or legend\nd.) Art or craft\n","Q7.) What is the Māori name for the Milford Sound?\n\na.) Piopiotahi\nb.) Whangaparapara\nc.) Ohiwa\nd.) Aotea\n","Q8.) What colour is the 'kakapo' bird in te reo Māori?\n\na.) Kakariki\nb.) Kikorangi\nc.) Pango\nd.) Kowhai\n","Q9.) What is the Māori name for the Southern Alps?\n\na.) Kaimai Range\nb.) Tararua Range\nc.) Kaikoura Range\nd.) Kā Tiritiri-o-te-Moana\n","Q10.) What does the word 'wairua' mean in te reo Māori?\n\na.) Spirit or soul\nb.) Mind or consciousness\nc.) Heart or emotion\nd.) Breath or life force\n"};
 
 
             //begins loop for beginner questions
