@@ -80,8 +80,6 @@ namespace maoriquiz_
             Console.WriteLine("you have chosen the Beginner level!\n");
 
 
-
-
             //array for answers worded answers for reference (may delete later)
             string[] answers = { "aroha", "kakariki", "enoho", "awa", "haka", "waka", "pango or mangu", "maunga", "papa", "whaea" };
 
@@ -140,8 +138,6 @@ namespace maoriquiz_
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
-                    Console.WriteLine("you have chosen the beginner level!");
-
 
                     //end of level method
 
@@ -150,84 +146,84 @@ namespace maoriquiz_
             }
         }
         static void Intermediate()
+        {
+
+            //clears console visually
+            Console.Clear();
+
+            //informs the viewer that they have chosen the intermediate level
+            Console.WriteLine("you have chosen the Intermediate level!");
+
+            //array for answers worded answers for reference (may delete later)
+            string[] answers = { "To try", "Hello and Welcome", "Aoraki", "Family tree or genealogy", "Tautoru", "To eat", "Kereru", "Song", "Hello or thank you", "Marae" };
+
+            //array for letter answers
+            string[] letteranswers = { "a", "a", "b", "a", "b", "b", "c", "a", "a", "a" };
+
+            //array for questions
+            string[] questions =
+
+            {"Q1. What does the word 'tāmātaki' mean in te reo Māori?\na.) To try\nb.) To cook\nc.) To swim\nd.) To sing\n","Q2. Which of the following is the correct translation for the phrase 'nau mai, haere mai'?\na.) Hello and welcome\nb.) Goodbye and thank you\nc.) Please and thank you\nd.) Yes and no\n","Q3. What is the Māori name for New Zealand's highest mountain?\na.) Taranaki\nb.) Aoraki\nc.) Tarawera\nd.) Tongariro\n","Q4. What does the word 'whakapapa' mean in te reo Māori?\na.) Family tree or genealogy\nb.) To eat or consume\nc.) To dance or perform\nd.) To read or write\n","Q5. What is the Māori name for the Southern Cross constellation?\na.) Matariki\nb.) Tautoru\nc.) Whakaahu\nd.) Puanga\n","Q6. Which of the following is the correct translation for the word 'kai'?\na.) To swim\nb.) To eat\nc.) To sleep\nd.) To dance\n","Q7. What is the Māori name for the native bird commonly known as the wood pigeon?\na.) Ruru\nb.) Tui\nc.) Kereru\nd.) Piwakawaka\n","Q8. What does the word 'waiata' mean in te reo Māori?\na.) Song\nb.) Dance\nc.) Story\nd.) Ceremony\n","Q9. Which of the following is the correct translation for the phrase 'kia ora'?\na.) Hello or thank you\nb.) Goodbye or see you later\nc.) Please or excuse me\nd.) Yes or no\n","Q10. What is the Māori name for the traditional Māori meeting house?\na.) Marae\nb.) Wharenui\nc.) Waka\nd.) Pātaka\n"};
+
+
+            //begins loop for beginner questions
+
+            for (int i = 0; i < questions.Length; i++)
             {
+                //gives user time to read console info
+                Thread.Sleep(2000);
 
                 //clears console visually
                 Console.Clear();
 
-                //informs the viewer that they have chosen the intermediate level
-                Console.WriteLine("you have chosen the Intermediate level!");
+                //displays the question from the array
+                Console.WriteLine(questions[i] + "\n");
 
-                //array for answers worded answers for reference (may delete later)
-                string[] answers = { "To try", "Hello and Welcome", "Aoraki", "Family tree or genealogy", "Tautoru", "To eat", "Kereru", "Song", "Hello or thank you", "Marae" };
+                //reads what the user inputted
 
-                //array for letter answers
-                string[] letteranswers = { "a", "a", "b", "a", "b", "b", "c", "a", "a", "a" };
-
-                //array for questions
-                string[] questions =
-
-                {"Q1. What does the word 'tāmātaki' mean in te reo Māori?\na.) To try\nb.) To cook\nc.) To swim\nd.) To sing\n","Q2. Which of the following is the correct translation for the phrase 'nau mai, haere mai'?\na.) Hello and welcome\nb.) Goodbye and thank you\nc.) Please and thank you\nd.) Yes and no\n","Q3. What is the Māori name for New Zealand's highest mountain?\na.) Taranaki\nb.) Aoraki\nc.) Tarawera\nd.) Tongariro\n","Q4. What does the word 'whakapapa' mean in te reo Māori?\na.) Family tree or genealogy\nb.) To eat or consume\nc.) To dance or perform\nd.) To read or write\n","Q5. What is the Māori name for the Southern Cross constellation?\na.) Matariki\nb.) Tautoru\nc.) Whakaahu\nd.) Puanga\n","Q6. Which of the following is the correct translation for the word 'kai'?\na.) To swim\nb.) To eat\nc.) To sleep\nd.) To dance\n","Q7. What is the Māori name for the native bird commonly known as the wood pigeon?\na.) Ruru\nb.) Tui\nc.) Kereru\nd.) Piwakawaka\n","Q8. What does the word 'waiata' mean in te reo Māori?\na.) Song\nb.) Dance\nc.) Story\nd.) Ceremony\n","Q9. Which of the following is the correct translation for the phrase 'kia ora'?\na.) Hello or thank you\nb.) Goodbye or see you later\nc.) Please or excuse me\nd.) Yes or no\n","Q10. What is the Māori name for the traditional Māori meeting house?\na.) Marae\nb.) Wharenui\nc.) Waka\nd.) Pātaka\n"};
+                string useranswers1 = Console.ReadLine().ToLower();
 
 
-                //begins loop for beginner questions
-
-                for (int i = 0; i < questions.Length; i++)
+                //if answer is correct as per parallel array, then prompts user saying that they are correct
+                if (useranswers1 == letteranswers[i])
                 {
+
+                    points++;
+
+                    //displays that user is correct
+                    Console.WriteLine("\ncongratulations! you're right :)");
+
+                    //displays points for user
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
+
                     //gives user time to read console info
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
+                }
 
-                    //clears console visually
-                    Console.Clear();
-
-                    //displays the question from the array
-                    Console.WriteLine(questions[i] + "\n");
-
-                    //reads what the user inputted
-
-                    string useranswers1 = Console.ReadLine().ToLower();
+                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                else
+                {
+                    Console.WriteLine("\noh no! you're wrong :(");
 
 
-                    //if answer is correct as per parallel array, then prompts user saying that they are correct
-                    if (useranswers1 == letteranswers[i])
-                    {
-
-                        points++;
-
-                        //displays that user is correct
-                        Console.WriteLine("\ncongratulations! you're right :)");
-
-                        //displays points for user
-                        Console.WriteLine("\nyour current score is:" + points + "/10");
-
-                        //gives user time to read console info
-                        Thread.Sleep(1000);
-                    }
-
-                    //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
-                    else
-                    {
-                        Console.WriteLine("\noh no! you're wrong :(");
-
-
-                        //displays points for user
-                        Console.WriteLine("\nyour current score is:" + points + "/10");
+                    //displays points for user
+                    Console.WriteLine("\nyour current score is:" + points + "/10");
 
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
-                        //end of level method
-                    }
-
+                    //end of level method
                 }
-                 
-             //redo("beg");
 
             }
 
+            //redo("beg");
 
-                static void Advanced()
-                {
+        }
+
+
+        static void Advanced()
+        {
             //clears console visually
             Console.Clear();
 
@@ -300,11 +296,11 @@ namespace maoriquiz_
                     Console.WriteLine("do you want to redo level?\n\nif yes, type 'Y'");
                     string redoans = Console.ReadLine().ToUpper();
 
-                    if( redoans =="Y")
+                    if (redoans == "Y")
 
                     {
                         Console.WriteLine("welocme back " + name);
-                        if(level == "ad")
+                        if (level == "ad")
                         {
                             Advanced();
                         }
@@ -332,7 +328,8 @@ namespace maoriquiz_
 
             }
         }
-
+    }
+}
     
 
 
