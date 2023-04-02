@@ -34,16 +34,16 @@ namespace maoriquiz_
             Console.Clear();
 
             //navigates to mainmenu method
-            mainmenu(name);
+            mainmenu(userName);
 
         }
-        static void mainmenu(string name)
+        static void mainmenu(string userName)
         {
             //welcomes viewer again using name to the main menu
-            Console.WriteLine($"Welcome " + name + "!");
+            Console.WriteLine($"Welcome " + userName + "!");
 
             //asks user for what level they would like to try
-            Console.WriteLine($"\nWhat level would you like try " + name + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced\n");
+            Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced\n");
             string level = Console.ReadLine();
 
 
@@ -54,7 +54,7 @@ namespace maoriquiz_
             if (intnum == 1)
             {
                 //navigates to beginner level
-                Beginner(name);
+                Beginner(userName);
 
             }
 
@@ -62,7 +62,7 @@ namespace maoriquiz_
 
             {
                 //navigates to intermediate level
-                Intermediate(name);
+                Intermediate(userName);
 
             }
 
@@ -70,7 +70,7 @@ namespace maoriquiz_
 
             {
                 //navigates to advanced level
-                Advanced(name);
+                Advanced(userName);
 
             }
 
@@ -78,7 +78,7 @@ namespace maoriquiz_
 
     
 
-        static void Beginner(string name)
+        static void Beginner(string userName)
         {
             //clears console visually
             Console.Clear();
@@ -144,13 +144,13 @@ namespace maoriquiz_
                 
 
                 string redoquizans;
-                Console.WriteLine(""+name+", your final score was"+points+"!!");
+                Console.WriteLine(""+userName+ ", your final score was"+points+"!!");
                 Console.WriteLine("would you like to redo quiz?\n\na.) yes b.)no");
                 redoquizans = Console.ReadLine();
                 if (redoquizans == "a") ;
                 {
-                    Console.WriteLine($"wjwjwj" + name);
-                    mainmenu(name);
+                    Console.WriteLine($"wjwjwj" + userName);
+                    mainmenu(userName);
                     
 
                 }
