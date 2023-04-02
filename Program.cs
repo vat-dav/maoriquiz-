@@ -159,7 +159,7 @@ namespace maoriquiz_
             Console.Clear();
 
             //informs the user what their final score was
-            Console.WriteLine("\n" + userName + ", your final score was " + points + "!");
+            Console.WriteLine("" + userName + ", your final score was " + points + "!");
 
             //asks user if they would like to redo the quiz
             Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
@@ -261,7 +261,7 @@ namespace maoriquiz_
             Console.Clear();
 
             //informs the user what their final score was
-            Console.WriteLine("\n" + userName + ", your final score was " + points + "!");
+            Console.WriteLine("" + userName + ", your final score was " + points + "!");
 
             //asks user if they would like to redo the quiz
             Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
@@ -365,7 +365,7 @@ namespace maoriquiz_
             Console.Clear();
 
             //informs the user what their final score was
-            Console.WriteLine("\n" + userName + ", your final score was " + points + "!");
+            Console.WriteLine("" + userName + ", your final score was " + points + "!");
 
             //asks user if they would like to redo the quiz
             Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
@@ -391,7 +391,7 @@ namespace maoriquiz_
 
                 //end of level method
             }
-
+             
 
 
         }
