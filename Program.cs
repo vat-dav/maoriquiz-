@@ -28,7 +28,7 @@ namespace maoriquiz_
             Console.WriteLine("\nWhat is your name?\n");
 
             //declares that the name of the user is what they will enter
-            string name = Console.ReadLine();
+            string userName = Console.ReadLine();
 
             //clears console visually 
             Console.Clear();
