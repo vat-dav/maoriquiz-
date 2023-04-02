@@ -10,21 +10,24 @@ namespace maoriquiz_
 {
     internal class Program
     {
-       
+
         static int points;
         static void Main(string[] args)
         {
-            string s2_uni = "\u263A"; // unicode code for s2
+            // unicode code for s2
+            string s2_uni = "\u263A";
 
 
             //welcoming user to quiz
-            Console.WriteLine($"Welcome to my Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key.\n\nEnjoy" + s2_uni + " !");
+            Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n\nEnjoy" + s2_uni + " !");
 
             //gives user time to process information slowly
             Thread.Sleep(1500);
 
             //prompts user for name
             Console.WriteLine("\nWhat is your name?\n");
+
+            //declares that the name of the user is what they will enter
             string name = Console.ReadLine();
 
             //clears console visually 
@@ -51,7 +54,7 @@ namespace maoriquiz_
             if (intnum == 1)
             {
                 //navigates to beginner level
-                Beginner();
+                Beginner(name);
 
             }
 
@@ -59,7 +62,7 @@ namespace maoriquiz_
 
             {
                 //navigates to intermediate level
-                Intermediate();
+                Intermediate(name);
 
             }
 
@@ -67,14 +70,15 @@ namespace maoriquiz_
 
             {
                 //navigates to advanced level
-                Advanced();
+                Advanced(name);
 
             }
 
         }
 
+    
 
-        static void Beginner()
+        static void Beginner(string name)
         {
             //clears console visually
             Console.Clear();
@@ -82,7 +86,7 @@ namespace maoriquiz_
             //informs the viewer they have chosen the beginner level
             Console.WriteLine("you have chosen the Beginner level!\n");
 
-            //array for letter answers
+            //array for multichoice letter answers
             string[] letteranswers = { "a", "b", "a", "c", "d", "a", "a", "b", "a", "d" };
 
             //array for questions
@@ -92,7 +96,6 @@ namespace maoriquiz_
 
 
             //begins loop for beginner questions
-
             for (int i = 0; i < questions.Length; i++)
             {
                 //gives user time to read console info
@@ -105,14 +108,13 @@ namespace maoriquiz_
                 Console.WriteLine(questions[i] + "\n");
 
                 //reads what the user inputted
-
                 string useranswers1 = Console.ReadLine().ToLower();
 
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (useranswers1 == letteranswers[i])
                 {
-
+                    //adds one point to the users total points for the level
                     points++;
 
                     //displays that user is correct
@@ -137,22 +139,24 @@ namespace maoriquiz_
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
-                    string redoquizans;
-                    Console.WriteLine("would you like to redo quiz?\n\na.) yes b.)no");
-                    redoquizans = Console.ReadLine().ToLower();
-                    if (redoquizans == "a") ;
-                    {
-                        string name;
-                        //mainmenu(name);
-                        //Console.WriteLine($"wjwjwj"+name");
+                }
 
-                    }
-                    if (redoquizans == "b");
-                    {
-                        Console.WriteLine("thank you for playing Vatsal's Te Reo Maori Quiz!");
+                
 
-                    }
+                string redoquizans;
+                Console.WriteLine(""+name+", your final score was"+points+"!!");
+                Console.WriteLine("would you like to redo quiz?\n\na.) yes b.)no");
+                redoquizans = Console.ReadLine();
+                if (redoquizans == "a") ;
+                {
+                    Console.WriteLine($"wjwjwj" + name);
+                    mainmenu(name);
+                    
 
+                }
+                if (redoquizans == "b") ;
+                {
+                    Console.WriteLine("thank you for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
 
 
                     //end of level method
@@ -161,7 +165,7 @@ namespace maoriquiz_
                 }
             }
         }
-        static void Intermediate()
+        static void Intermediate(string name)
         {
 
             //clears console visually
@@ -201,7 +205,7 @@ namespace maoriquiz_
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (useranswers1 == letteranswers[i])
                 {
-
+                    //adds one point to the users total points for the level
                     points++;
 
                     //displays that user is correct
@@ -231,12 +235,12 @@ namespace maoriquiz_
 
             }
 
-            //redo("beg");
+        
 
         }
 
 
-        static void Advanced()
+        static void Advanced(string name)
         {
             //clears console visually
             Console.Clear();
@@ -277,7 +281,7 @@ namespace maoriquiz_
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (useranswers1 == letteranswers[i])
                 {
-
+                    //adds one point to the users total points for the level
                     points++;
 
                     //displays that user is correct
@@ -302,8 +306,9 @@ namespace maoriquiz_
                     //gives user time to read console info
                     Thread.Sleep(1000);
 
-
+                    //end of level method
                 }
+
 
                 /*static void redo(string level)
                 {
@@ -327,17 +332,18 @@ namespace maoriquiz_
                             Beginner();
                         }
 
+                    //redo("beg");
 
 
-
+                string.equals("")
 
                     }
                     else
                     {
                         Console.WriteLine("good bye");
                         return; */
-                    }
-                }
+            }
+        }
 
 
             }
