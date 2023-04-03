@@ -12,7 +12,11 @@ namespace maoriquiz_
     {
 
         static int points;
-        static void Main(string[] args)
+
+
+
+
+            static void Main(string[] args)
         {
             // unicode code for s2
             string s2_uni = "\u263A";
@@ -86,6 +90,9 @@ namespace maoriquiz_
 
         static void Beginner(string userName)
         {
+            //ensures the points reset to 0
+            points = 0;
+
             //clears console visually
             Console.Clear();
 
@@ -149,45 +156,19 @@ namespace maoriquiz_
 
 
             }
+            //navigates to redo method in which user can redo the quiz if they would like to
+            redo(userName);
 
+            //end of level method
 
-
-            //stores the input which will be received by the user regarding whether they want to redo the quiz
-            string redoquizans;
-
-            //clears console for the viewer
-            Console.Clear();
-
-            //informs the user what their final score was
-            Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-            //asks user if they would like to redo the quiz
-            Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-            //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-            redoquizans = Console.ReadLine();
-
-            //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-            if (redoquizans == "a")
-            {
-                mainmenu(userName);
-
-
-            }
-            //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-            if (redoquizans == "b")
-            {
-                Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
-
-                //end of level method
-
-
-            }
 
         }
+
+        
         static void Intermediate(string userName)
         {
+            //ensures the points reset to 0
+            points = 0;
 
             //clears console visually
             Console.Clear();
@@ -254,43 +235,20 @@ namespace maoriquiz_
                 }
             }
 
-            //stores the input which will be received by the user regarding whether they want to redo the quiz
-            string redoquizans;
+            //navigates to redo method in which user can redo the quiz if they would like to
+                    redo(userName);
 
-            //clears console for the viewer
-            Console.Clear();
+            //end of level method
 
-            //informs the user what their final score was
-            Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-            //asks user if they would like to redo the quiz
-            Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-            //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-            redoquizans = Console.ReadLine();
-
-            //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-            if (redoquizans == "a")
-            {
-                mainmenu(userName);
-
-
-            }
-
-            //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-            if (redoquizans == "b")
-            {
-
-                Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
-                //end of level method
-
-            }
         }
+        
 
         static void Advanced(string userName)
 
         {
+            //ensures the points reset to 0
+            points = 0;
+
             //clears console visually
             Console.Clear();
 
@@ -357,50 +315,54 @@ namespace maoriquiz_
 
                 }
             }
-
-            //stores the input which will be received by the user regarding whether they want to redo the quiz
-            string redoquizans;
-
-            //clears console for the viewer
-            Console.Clear();
-
-            //informs the user what their final score was
-            Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-            //asks user if they would like to redo the quiz
-            Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-            //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-            redoquizans = Console.ReadLine();
-
-            //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-            if (redoquizans == "a")
-            {
-
-                mainmenu(userName);
-
-
-            }
-
-            //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-            if (redoquizans == "b")
-
-            {
-                Console.WriteLine("thank you" + userName + "playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
+                    //navigates to redo method in which user can redo the quiz if they would like to
+                    redo(userName);
 
                 //end of level method
             }
-             
 
+            static void redo(string userName)
+            {
+                //stores the input which will be received by the user regarding whether they want to redo the quiz
+                string redoquizans;
+
+                //clears console for the viewer
+                Console.Clear();
+
+                //informs the user what their final score was
+                Console.WriteLine("" + userName + ", your final score was " + points + "!");
+
+                //asks user if they would like to redo the quiz
+                Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
+
+                //tells program that the variable which the user inputs should be stored in the "redoquizans" string
+                redoquizans = Console.ReadLine();
+
+                //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
+                if (redoquizans == "a")
+                {
+                    mainmenu(userName);
+
+
+                }
+                //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
+                if (redoquizans == "b")
+                {
+                    Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
+
+
+
+
+                }
+            }
 
         }
     }
-}
 
 
 
 
+//fix points system,
 
 
 
