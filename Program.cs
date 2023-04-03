@@ -17,51 +17,51 @@ namespace maoriquiz_
 
 
             static void Main(string[] args)
-        {
-            // unicode code for s2
+            {
+            // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
 
-            //welcoming user to quiz
+            // welcoming user to quiz
             Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n\nEnjoy" + s2_uni + " !");
 
-            //gives user time to process information slowly
+            // gives user time to process information slowly
             Thread.Sleep(1500);
 
-            //prompts user for name
+            // prompts user for name
             Console.WriteLine("\nWhat is your name?\n");
 
-            //declares that the name of the user is what they will enter
+            // declares that the name of the user is what they will enter
             string userName = Console.ReadLine();
 
-            //clears console visually 
+            // clears console visually 
             Console.Clear();
 
-            //navigates to mainmenu method
+            // navigates to mainmenu method
             mainmenu(userName);
 
         }
         static void mainmenu(string userName)
 
         {
-            //clears console visually
+            // clears console visually
             Console.Clear();
 
-            //welcomes viewer again using name to the main menu
+            // welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
 
-            //asks user for what level they would like to try
+            // asks user for what level they would like to try
             Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced\n");
             string level = Console.ReadLine();
 
 
-            //converts string to int
+            // converts string to int
             int intnum = Convert.ToInt32(level);
 
 
             if (intnum == 1)
             {
-                //navigates to beginner level
+                // navigates to beginner level
                 Beginner(userName);
 
             }
@@ -69,7 +69,7 @@ namespace maoriquiz_
             else if (intnum == 2)
 
             {
-                //navigates to intermediate level
+                // navigates to intermediate level
                 Intermediate(userName);
 
             }
@@ -77,20 +77,14 @@ namespace maoriquiz_
             if (intnum == 3)
 
             {
-                //navigates to advanced level
+                // navigates to advanced level
                 Advanced(userName);
 
             }
         }
-
-
-
-
-
-
-        static void Beginner(string userName)
+          static void Beginner(string userName)
         {
-            //ensures the points reset to 0
+            //ensures the points reset to 0 if user decides to redo the quiz
             points = 0;
 
             //clears console visually
@@ -167,7 +161,7 @@ namespace maoriquiz_
         
         static void Intermediate(string userName)
         {
-            //ensures the points reset to 0
+            //ensures the points reset to 0 if user decides to redo quiz
             points = 0;
 
             //clears console visually
@@ -183,7 +177,7 @@ namespace maoriquiz_
             //array for questions
             string[] questions =
 
-            {"Q1. What does the word 'tāmātaki' mean in te reo Māori?\na.) To try\nb.) To cook\nc.) To swim\nd.) To sing\n","Q2. Which of the following is the correct translation for the phrase 'nau mai, haere mai'?\na.) Hello and welcome\nb.) Goodbye and thank you\nc.) Please and thank you\nd.) Yes and no\n","Q3. What is the Māori name for New Zealand's highest mountain?\na.) Taranaki\nb.) Aoraki\nc.) Tarawera\nd.) Tongariro\n","Q4. What does the word 'whakapapa' mean in te reo Māori?\na.) Family tree or genealogy\nb.) To eat or consume\nc.) To dance or perform\nd.) To read or write\n","Q5. What is the Māori name for the Southern Cross constellation?\na.) Matariki\nb.) Tautoru\nc.) Whakaahu\nd.) Puanga\n","Q6. Which of the following is the correct translation for the word 'kai'?\na.) To swim\nb.) To eat\nc.) To sleep\nd.) To dance\n","Q7. What is the Māori name for the native bird commonly known as the wood pigeon?\na.) Ruru\nb.) Tui\nc.) Kereru\nd.) Piwakawaka\n","Q8. What does the word 'waiata' mean in te reo Māori?\na.) Song\nb.) Dance\nc.) Story\nd.) Ceremony\n","Q9. Which of the following is the correct translation for the phrase 'kia ora'?\na.) Hello or thank you\nb.) Goodbye or see you later\nc.) Please or excuse me\nd.) Yes or no\n","Q10. What is the Māori name for the traditional Māori meeting house?\na.) Marae\nb.) Wharenui\nc.) Waka\nd.) Pātaka\n"};
+            {"Q1. What does the word 'tāmātaki' mean in te reo Māori?\n\na.) To try\nb.) To cook\nc.) To swim\nd.) To sing\n","Q2. Which of the following is the correct translation for the phrase 'nau mai, haere mai'?\n\na.) Hello and welcome\nb.) Goodbye and thank you\nc.) Please and thank you\nd.) Yes and no\n","Q3. What is the Māori name for New Zealand's highest mountain?\n\na.) Taranaki\nb.) Aoraki\nc.) Tarawera\nd.) Tongariro\n","Q4. What does the word 'whakapapa' mean in te reo Māori?\n\na.) Family tree or genealogy\nb.) To eat or consume\nc.) To dance or perform\nd.) To read or write\n","Q5. What is the Māori name for the Southern Cross constellation?\n\na.) Matariki\nb.) Tautoru\nc.) Whakaahu\nd.) Puanga\n","Q6. Which of the following is the correct translation for the word 'kai'?\n\na.) To swim\nb.) To eat\nc.) To sleep\nd.) To dance\n","Q7. What is the Māori name for the native bird commonly known as the wood pigeon?\n\na.) Ruru\nb.) Tui\nc.) Kereru\nd.) Piwakawaka\n","Q8. What does the word 'waiata' mean in te reo Māori?\n\na.) Song\nb.) Dance\nc.) Story\nd.) Ceremony\n","Q9. Which of the following is the correct translation for the phrase 'kia ora'?\n\na.) Hello or thank you\nb.) Goodbye or see you later\nc.) Please or excuse me\nd.) Yes or no\n","Q10. What is the Māori name for the traditional Māori meeting house?\n\na.) Marae\nb.) Wharenui\nc.) Waka\nd.) Pātaka\n"};
 
 
             //begins loop for beginner questions
@@ -246,7 +240,7 @@ namespace maoriquiz_
         static void Advanced(string userName)
 
         {
-            //ensures the points reset to 0
+            //ensures the points reset to 0 if user decides to redo quiz
             points = 0;
 
             //clears console visually
@@ -358,12 +352,6 @@ namespace maoriquiz_
 
         }
     }
-
-
-
-
-//fix points system,
-
 
 
 
