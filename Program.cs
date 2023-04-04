@@ -20,10 +20,12 @@ namespace maoriquiz_
             // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
-
             // welcoming user to quiz
-            Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n\nEnjoy" + s2_uni + " !");
+            Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
 
+            Thread.Sleep( 1000 );   
+
+            Console.WriteLine($"\nEnjoy" + s2_uni + " !");
 
 
             // gives user time to process information slowly
@@ -35,12 +37,14 @@ namespace maoriquiz_
             // declares that the name of the user is what they will enter
             string userName = Console.ReadLine();
 
+            // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
             while (string.IsNullOrEmpty(userName))
             {
                 Console.WriteLine("you must enter valid name");
                 userName = Console.ReadLine();
             }
 
+            // validation of code, makes sure the user puts in a name between 1-25 letters
             while (userName.Length >= 25)
             {
                 Console.WriteLine("PLease enetr name between 1-25 letters");
@@ -53,6 +57,7 @@ namespace maoriquiz_
             mainmenu(userName);
 
         }
+        // calls mainmenu method while parsing the users name
         static void mainmenu(string userName)
 
         {
@@ -67,6 +72,7 @@ namespace maoriquiz_
             Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\na.) Beginner\nb.) Intermediate\nc.) Advanced\n");
             string levelselection = Console.ReadLine().ToLower();
 
+            // validates the code, if any level besides a, b, or c is pressed then comes up as error
             while (levelselection != "a" && levelselection != "b" && levelselection != "c")
             {
                 Console.WriteLine("please enter valid level");
@@ -74,6 +80,7 @@ namespace maoriquiz_
 
             }
 
+            // if a pressed then navigates to beginner level
             if (levelselection == "a")
             {
                 // navigates to beginner level
@@ -81,6 +88,7 @@ namespace maoriquiz_
 
             }
 
+            // if b pressed then navigates to intermediate level
             else if (levelselection == "b")
 
             {
@@ -89,6 +97,7 @@ namespace maoriquiz_
 
             }
 
+            // if c pressed then navigates to advanced level
             else if (levelselection == "c")
 
             {
@@ -99,6 +108,7 @@ namespace maoriquiz_
 
         }
         
+        // calls beginner method whilst parsing users name
         static void Beginner(string userName)
         {
             //ensures the points reset to 0 if user decides to redo the quiz
@@ -134,6 +144,7 @@ namespace maoriquiz_
                 //reads what the user inputted
                 string useranswers = Console.ReadLine().ToLower();
 
+                // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
                 if (string.IsNullOrEmpty(useranswers))
 
                 {
@@ -217,9 +228,9 @@ namespace maoriquiz_
                 Console.WriteLine(questions[i] + "\n");
 
                 //reads what the user inputted
-
                 string useranswer = Console.ReadLine().ToLower();
 
+                // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
                 if (string.IsNullOrEmpty(useranswer))
 
                 {
@@ -359,7 +370,8 @@ namespace maoriquiz_
             Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
 
             //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-            redoquizans = Console.ReadLine();
+            redoquizans = Console.ReadLine().ToLower();
+
 
             //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
             if (redoquizans == "a")
