@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -13,17 +14,17 @@ namespace maoriquiz_
 
         static int points;
 
+        static void Main(string[] args)
+        {
 
-
-
-            static void Main(string[] args)
-            {
             // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
 
             // welcoming user to quiz
             Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n\nEnjoy" + s2_uni + " !");
+
+
 
             // gives user time to process information slowly
             Thread.Sleep(1500);
@@ -34,6 +35,17 @@ namespace maoriquiz_
             // declares that the name of the user is what they will enter
             string userName = Console.ReadLine();
 
+            while (string.IsNullOrEmpty(userName))
+            {
+                Console.WriteLine("you must enter valid name");
+                userName = Console.ReadLine();
+            }
+
+            while (userName.Length >= 25)
+            {
+                Console.WriteLine("PLease enetr name between 1-25 letters");
+                userName = Console.ReadLine();
+            }
             // clears console visually 
             Console.Clear();
 
@@ -49,24 +61,27 @@ namespace maoriquiz_
 
             // welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
+            int level;
 
             // asks user for what level they would like to try
-            Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\n1.) Beginner\n2.) Intermediate\n3.) Advanced\n");
-            string level = Console.ReadLine();
+            Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\na.) Beginner\nb.) Intermediate\nc.) Advanced\n");
+            string levelselection = Console.ReadLine().ToLower();
 
+            while (levelselection != "a" && levelselection != "b" && levelselection != "c")
+            {
+                Console.WriteLine("please enter valid level");
+                levelselection = Console.ReadLine();
 
-            // converts string to int
-            int intnum = Convert.ToInt32(level);
+            }
 
-
-            if (intnum == 1)
+            if (levelselection == "a")
             {
                 // navigates to beginner level
                 Beginner(userName);
 
             }
 
-            else if (intnum == 2)
+            else if (levelselection == "b")
 
             {
                 // navigates to intermediate level
@@ -74,15 +89,17 @@ namespace maoriquiz_
 
             }
 
-            if (intnum == 3)
+            else if (levelselection == "c")
 
             {
                 // navigates to advanced level
                 Advanced(userName);
 
             }
+
         }
-          static void Beginner(string userName)
+        
+        static void Beginner(string userName)
         {
             //ensures the points reset to 0 if user decides to redo the quiz
             points = 0;
@@ -115,11 +132,18 @@ namespace maoriquiz_
                 Console.WriteLine(questions[i] + "\n");
 
                 //reads what the user inputted
-                string useranswers1 = Console.ReadLine().ToLower();
+                string useranswers = Console.ReadLine().ToLower();
+
+                if (string.IsNullOrEmpty(useranswers))
+
+                {
+                    Console.WriteLine("please enter a valid answer");
+                    useranswers = Console.ReadLine().ToLower();
+                }
 
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
-                if (useranswers1 == letteranswers[i])
+                if (useranswers == letteranswers[i])
                 {
                     //adds one point to the users total points for the level
                     points++;
@@ -145,11 +169,10 @@ namespace maoriquiz_
 
                     //gives user time to read console info
                     Thread.Sleep(1000);
-
                 }
 
-
             }
+
             //navigates to redo method in which user can redo the quiz if they would like to
             redo(userName);
 
@@ -158,7 +181,7 @@ namespace maoriquiz_
 
         }
 
-        
+
         static void Intermediate(string userName)
         {
             //ensures the points reset to 0 if user decides to redo quiz
@@ -195,11 +218,17 @@ namespace maoriquiz_
 
                 //reads what the user inputted
 
-                string useranswers1 = Console.ReadLine().ToLower();
+                string useranswer = Console.ReadLine().ToLower();
 
+                if (string.IsNullOrEmpty(useranswer))
+
+                {
+                    Console.WriteLine("please enter a valid answer");
+                    useranswer = Console.ReadLine().ToLower();
+                }
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
-                if (useranswers1 == letteranswers[i])
+                if (useranswer == letteranswers[i])
                 {
                     //adds one point to the users total points for the level
                     points++;
@@ -230,12 +259,12 @@ namespace maoriquiz_
             }
 
             //navigates to redo method in which user can redo the quiz if they would like to
-                    redo(userName);
+            redo(userName);
 
             //end of level method
 
         }
-        
+
 
         static void Advanced(string userName)
 
@@ -276,11 +305,11 @@ namespace maoriquiz_
 
                 //reads what the user inputted
 
-                string useranswers1 = Console.ReadLine().ToLower();
+                string userans = Console.ReadLine().ToLower();
 
 
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
-                if (useranswers1 == letteranswers[i])
+                if (userans == letteranswers[i])
                 {
                     //adds one point to the users total points for the level
                     points++;
@@ -309,49 +338,45 @@ namespace maoriquiz_
 
                 }
             }
-                    //navigates to redo method in which user can redo the quiz if they would like to
-                    redo(userName);
+            //navigates to redo method in which user can redo the quiz if they would like to
+            redo(userName);
 
-                //end of level method
-            }
-
-            static void redo(string userName)
-            {
-                //stores the input which will be received by the user regarding whether they want to redo the quiz
-                string redoquizans;
-
-                //clears console for the viewer
-                Console.Clear();
-
-                //informs the user what their final score was
-                Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-                //asks user if they would like to redo the quiz
-                Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-                //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-                redoquizans = Console.ReadLine();
-
-                //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-                if (redoquizans == "a")
-                {
-                    mainmenu(userName);
-
-
-                }
-                //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-                if (redoquizans == "b")
-                {
-                    Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
-
-
-
-                }
-            }
-
+            //end of level method
         }
+
+        static void redo(string userName)
+        {
+            //stores the input which will be received by the user regarding whether they want to redo the quiz
+            string redoquizans;
+
+            //clears console for the viewer
+            Console.Clear();
+
+            //informs the user what their final score was
+            Console.WriteLine("" + userName + ", your final score was " + points + "!");
+
+            //asks user if they would like to redo the quiz
+            Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
+
+            //tells program that the variable which the user inputs should be stored in the "redoquizans" string
+            redoquizans = Console.ReadLine();
+
+            //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
+            if (redoquizans == "a")
+            {
+                mainmenu(userName);
+
+            }
+            //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
+            if (redoquizans == "b")
+            {
+                Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
+
+            }
+        }
+
     }
+}
 
 
 
