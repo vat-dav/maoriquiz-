@@ -1,13 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.Design;
-using System.Net.NetworkInformation;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-
-namespace maoriquiz_
+﻿namespace maoriquiz_
 {
     internal class Program
     {
@@ -23,9 +14,9 @@ namespace maoriquiz_
             // welcoming user to quiz
             Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
 
-            Thread.Sleep( 1000 );   
+            Thread.Sleep(1000);
 
-            Console.WriteLine($"\nEnjoy" + s2_uni + " !");
+            Console.WriteLine($"\nEnjoy " + s2_uni + " !");
 
 
             // gives user time to process information slowly
@@ -35,47 +26,46 @@ namespace maoriquiz_
             Console.WriteLine("\nWhat is your name?\n");
 
             // declares that the name of the user is what they will enter
-            string userName = Console.ReadLine();
+            string user_name = Console.ReadLine();
 
             // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
-            while (string.IsNullOrEmpty(userName))
+            while (string.IsNullOrEmpty(user_name))
             {
-                Console.WriteLine("you must enter valid name");
-                userName = Console.ReadLine();
+                Console.WriteLine("please enter a name between 1-25 letters");
+                user_name = Console.ReadLine();
             }
 
             // validation of code, makes sure the user puts in a name between 1-25 letters
-            while (userName.Length >= 25)
+            while (user_name.Length >= 25)
             {
-                Console.WriteLine("PLease enetr name between 1-25 letters");
-                userName = Console.ReadLine();
+                Console.WriteLine("please enter a name between 1-25 letters");
+                user_name = Console.ReadLine();
             }
             // clears console visually 
             Console.Clear();
 
             // navigates to mainmenu method
-            mainmenu(userName);
+            mainmenu(user_name);
 
         }
         // calls mainmenu method while parsing the users name
-        static void mainmenu(string userName)
+        static void mainmenu(string user_name)
 
         {
             // clears console visually
             Console.Clear();
 
             // welcomes viewer again using name to the main menu
-            Console.WriteLine($"Welcome " + userName + "!");
-            int level;
+            Console.WriteLine($"Welcome " + user_name + "!");
 
             // asks user for what level they would like to try
-            Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\na.) Beginner\nb.) Intermediate\nc.) Advanced\n");
+            Console.WriteLine($"\nWhat level would you like try " + user_name + "?\n\na.) Beginner (a)\nb.) Intermediate (b)\nc.) Advanced (c)\n");
             string levelselection = Console.ReadLine().ToLower();
 
             // validates the code, if any level besides a, b, or c is pressed then comes up as error
-            while (levelselection != "a" && levelselection != "b" && levelselection != "c")
+            while (!levelselection.Equals("a") && !levelselection.Equals("b") && !levelselection.Equals("c"))
             {
-                Console.WriteLine("please enter valid level");
+                Console.WriteLine("please enter valid level - (a, b, or c)");
                 levelselection = Console.ReadLine();
 
             }
@@ -84,7 +74,7 @@ namespace maoriquiz_
             if (levelselection == "a")
             {
                 // navigates to beginner level
-                Beginner(userName);
+                Beginner(user_name);
 
             }
 
@@ -93,7 +83,7 @@ namespace maoriquiz_
 
             {
                 // navigates to intermediate level
-                Intermediate(userName);
+                Intermediate(user_name);
 
             }
 
@@ -102,14 +92,15 @@ namespace maoriquiz_
 
             {
                 // navigates to advanced level
-                Advanced(userName);
+                Advanced(user_name);
 
             }
 
+  sss
         }
-        
+
         // calls beginner method whilst parsing users name
-        static void Beginner(string userName)
+        static void Beginner(string user_name)
         {
             //ensures the points reset to 0 if user decides to redo the quiz
             points = 0;
@@ -185,7 +176,7 @@ namespace maoriquiz_
             }
 
             //navigates to redo method in which user can redo the quiz if they would like to
-            redo(userName);
+            redo(user_name);
 
             //end of level method
 
@@ -193,7 +184,7 @@ namespace maoriquiz_
         }
 
 
-        static void Intermediate(string userName)
+        static void Intermediate(string user_name)
         {
             //ensures the points reset to 0 if user decides to redo quiz
             points = 0;
@@ -270,14 +261,14 @@ namespace maoriquiz_
             }
 
             //navigates to redo method in which user can redo the quiz if they would like to
-            redo(userName);
+            redo(user_name);
 
             //end of level method
 
         }
 
 
-        static void Advanced(string userName)
+        static void Advanced(string user_name)
 
         {
             //ensures the points reset to 0 if user decides to redo quiz
@@ -350,12 +341,12 @@ namespace maoriquiz_
                 }
             }
             //navigates to redo method in which user can redo the quiz if they would like to
-            redo(userName);
+            redo(user_name);
 
             //end of level method
         }
 
-        static void redo(string userName)
+        static void redo(string user_name)
         {
             //stores the input which will be received by the user regarding whether they want to redo the quiz
             string redoquizans;
@@ -364,7 +355,7 @@ namespace maoriquiz_
             Console.Clear();
 
             //informs the user what their final score was
-            Console.WriteLine("" + userName + ", your final score was " + points + "!");
+            Console.WriteLine("" + user_name + ", your final score was " + points + "!");
 
             //asks user if they would like to redo the quiz
             Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
@@ -376,13 +367,13 @@ namespace maoriquiz_
             //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
             if (redoquizans == "a")
             {
-                mainmenu(userName);
+                mainmenu(user_name);
 
             }
             //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
             if (redoquizans == "b")
             {
-                Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
+                Console.WriteLine("thank you" + user_name + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
 
             }
         }
