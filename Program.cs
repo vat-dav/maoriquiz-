@@ -1,4 +1,6 @@
-﻿namespace maoriquiz_
+﻿using System.Net.Security;
+
+namespace maoriquiz_
 {
     internal class Program
     {
@@ -58,19 +60,43 @@
                 Console.WriteLine("please enter a name between 1-25 letters");
                 userName = Console.ReadLine();
             }
-            // clears console visually 
-            Console.Clear();
+            string levelselection = mainmenu(userName);
 
-            // navigates to mainmenu method
-            mainmenu(userName);
+            // if a pressed then navigates to beginner level
+            if (levelselection == "a")
+            {
+                // navigates to beginner level
+                CheckAnswers(userName, begQuestions, begAnswers,"beginehbhehbbhr");
+
             }
-        
+
+            // if b pressed then navigates to intermediate level
+            else if (levelselection == "b")
+
+            {
+                // navigates to intermediate level
+               // CheckAnswers(userName, intQuestions, intAnswers);//
+
+            }
+
+            // if c pressed then navigates to advanced level
+            else if (levelselection == "c")
+
+            {
+                // navigates to advanced level
+               // CheckAnswers(userName, advQuestions, advAnswers);/
+
+            }
+
+        }
+
+
         // calls mainmenu method while parsing the users name
-        static void mainmenu(string userName , string[] begQuestions, string[] begAnswers, string[] intQuestions, string[] intAnswers, string[] advQuestions, string[] advAnswers)
+        static string mainmenu(string userName)
 
         {
             // clears console visually
-            Console.Clear();
+            //Console.Clear();
 
             // welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
@@ -86,150 +112,118 @@
                 levelselection = Console.ReadLine();
 
             }
+            return levelselection;
 
-            // if a pressed then navigates to beginner level
-            if (levelselection == "a")
+        }     
+            // calls beginner method whilst parsing users name
+            static void CheckAnswers(string userName, string[] questions, string[] answers, string level)
             {
-                // navigates to beginner level
-                CheckAnswers(userName, begQuestions, begAnswers);
-
-            }
-
-            // if b pressed then navigates to intermediate level
-            else if (levelselection == "b")
-
-            {
-                // navigates to intermediate level
-                CheckAnswers(userName, intQuestions, intAnswers);
-
-            }
-
-            // if c pressed then navigates to advanced level
-            else if (levelselection == "c") 
-
-            {
-                // navigates to advanced level
-                CheckAnswers(userName, advQuestions, advAnswers);
-
-            }
-
-        }
-
-        // calls beginner method whilst parsing users name
-        static void CheckAnswers(string userName, string[] questions, string[] answers)
-        {
-            //ensures the points reset to 0 if user decides to redo the quiz
-            points = 0;
-
-            //clears console visually
-            Console.Clear();
-
-            //informs the viewer they have chosen the beginner level
-            Console.WriteLine("you have chosen the Beginner level!\n");
-
             
-
-
-            //begins loop for beginner questions
-            for (int i = 0; i < questions.Length; i++)
-            {
-                //gives user time to read console info
-                Thread.Sleep(2000);
+                //ensures the points reset to 0 if user decides to redo the quiz
+                points = 0;
 
                 //clears console visually
                 Console.Clear();
 
-                //displays the question from the array
-                Console.WriteLine(questions[i] + "\n");
+                //informs the viewer they have chosen the beginner level
+                Console.WriteLine("you have chosen the" +  level + " level");
 
-                //reads what the user inputted
-                string useranswer = Console.ReadLine().ToLower();
-
-                // validates the code, if any level besides a, b, or c is pressed then comes up as error
-                while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
+                //begins loop for beginner questions
+                for (int i = 0; i < questions.Length; i++)
                 {
-                    Console.WriteLine("please enter valid level - (a, b, c, or d)");
-                    useranswer = Console.ReadLine().ToLower();
-
-                }
-
-                // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
-                if (string.IsNullOrEmpty(useranswer))
-
-                {
-                    Console.WriteLine("please enter a valid answer");
-                    useranswer = Console.ReadLine().ToLower();
-                }
-
-
-                //if answer is correct as per parallel array, then prompts user saying that they are correct
-                if (useranswer == letteranswers[i])
-                {
-                    //adds one point to the users total points for the level
-                    points++;
-
-                    //displays that user is correct
-                    Console.WriteLine("\ncongratulations! you're right :)");
-
-
                     //gives user time to read console info
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
+
+                    //clears console visually
+                    Console.Clear();
+
+                    //displays the question from the array
+                    Console.WriteLine(questions[i] + "\n");
+
+                    //reads what the user inputted
+                    string useranswer = Console.ReadLine().ToLower();
+
+                    // validates the code, if any level besides a, b, or c is pressed then comes up as error
+                    while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
+                    {
+                        Console.WriteLine("please enter valid level - (a, b, c, or d)");
+                        useranswer = Console.ReadLine().ToLower();
+
+                    }
+
+                    // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
+                    if (string.IsNullOrEmpty(useranswer))
+
+                    {
+                        Console.WriteLine("please enter a valid answer");
+                        useranswer = Console.ReadLine().ToLower();
+                    }
+
+
+                    //if answer is correct as per parallel array, then prompts user saying that they are correct
+                    if (useranswer == answers[i])
+                    {
+                        //adds one point to the users total points for the level
+                        points++;
+
+                        //displays that user is correct
+                        Console.WriteLine("\ncongratulations! you're right :)");
+
+
+                        //gives user time to read console info
+                        Thread.Sleep(1000);
+                    }
+
+                    //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                    else
+                    {
+                        Console.WriteLine("\noh no! you're wrong :(");
+
+
+
+                        //gives user time to read console info
+                        Thread.Sleep(1000);
+                    }
+
+                    //displays points for user
+                    Console.WriteLine("\nyour current score is:" + points + "/" + questions.Length + "");
+                    
+                    //end of level method
+
                 }
 
-                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
-                else
+                static void redo(string userName, string[] begQuestions, string[] begAnswers, string[] intQuestions, string[] intAnswers, string[] advQuestions, string[] advAnswers)
                 {
-                    Console.WriteLine("\noh no! you're wrong :(");
+                    //stores the input which will be received by the user regarding whether they want to redo the quiz
+                    string redoquizans;
+
+                    //clears console for the viewer
+                    Console.Clear();
+
+                    //informs the user what their final score was
+                    Console.WriteLine("" + userName + ", your final score was " + points + "!");
+
+                    //asks user if they would like to redo the quiz
+                    Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
+
+                    //tells program that the variable which the user inputs should be stored in the "redoquizans" string
+                    redoquizans = Console.ReadLine().ToLower();
 
 
-                   
-                    //gives user time to read console info
-                    Thread.Sleep(1000);
+                    //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
+                    if (redoquizans == "a")
+                    {
+                       // mainmenu(userName,);//
+
+                    }
+                    //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
+                    if (redoquizans == "b")
+                    {
+                        Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
+
+                    }
                 }
 
-                //displays points for user
-                Console.WriteLine("\nyour current score is:" + points + "/10");
-
-            }
-
-            //navigates to redo method in which user can redo the quiz if they would like to
-            redo(userName);
-
-            //end of level method
-
-        }
-
-        static void redo(string userName)
-        {
-            //stores the input which will be received by the user regarding whether they want to redo the quiz
-            string redoquizans;
-
-            //clears console for the viewer
-            Console.Clear();
-
-            //informs the user what their final score was
-            Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-            //asks user if they would like to redo the quiz
-            Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-            //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-            redoquizans = Console.ReadLine().ToLower();
-
-
-            //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-            if (redoquizans == "a")
-            {
-                mainmenu(userName);
-
-            }
-            //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-            if (redoquizans == "b")
-            {
-                Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
             }
         }
-
     }
-}
