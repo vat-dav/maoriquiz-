@@ -1,4 +1,5 @@
 ﻿using System.Net.Security;
+using System.Reflection.Metadata.Ecma335;
 
 namespace maoriquiz_
 {
@@ -9,6 +10,7 @@ namespace maoriquiz_
 
         static void Main(string[] args)
         {
+            bool redo = true;
             string[] begQuestions =
 
             {"Q1. What is 'love' in Te Reo Maori?\n\na.) aroha\nb.) tangata\nc.) pango\nd.) awa", "Q2. What is 'green' in Te Reo Maori?\n\na.) Pango\nb.) Kakariki\nc.) Whero\nd.) Kowhai", "Q3. What is the phrase 'sit down' in Te Reo Maori?\n\na.) Enoho\nb.) Tu ki runga\nc.) Haere Ra\nd.) Haera Mai", "Q4. What is 'river' in Te Reo Maori?\n\na.) Waka\nb.) Maunga\nc.) Awa\nd.) Maka",  "Q5. What is the name of the popular Maori dance that rugby players do before they start their game?\n\na.) Mala\nb.) Kaka\nc.) Waka\nd.) Haka", "Q6. What is the word for 'boat' in Te Reo Maori?\n\na.) Waka\nb.) Haka\nc.) Kikorangi\nd.) Kaka", "Q7. What is the colour 'black' in Te Reo Maori?\n\na.) Pango\nb.) Kikorangi\nc.) Mango\nd.) Kowhai",  "Q8. What is 'mountain' in Te Reo Maori?\n\na.) Awa\nb.) Maunga\nc.) Waka\nd.) Maka",  "Q9. What is 'father' in Te Reo Maori?\n\na.) Papa\nb.) Kaka\nc.) Mama\nd.) Whaea","Q10. What is 'mother' in Te Reo Maori?\n\na.) Maui\nb.) Ma\nc.) Mama\nd.) Whaea" };
@@ -60,35 +62,42 @@ namespace maoriquiz_
                 Console.WriteLine("please enter a name between 1-25 letters");
                 userName = Console.ReadLine();
             }
-            string levelselection = mainmenu(userName);
 
-            // if a pressed then navigates to beginner level
-            if (levelselection == "a")
+            while (redo == true)
             {
-                // navigates to beginner level
-                CheckAnswers(userName, begQuestions, begAnswers,"beginehbhehbbhr");
+                string levelselection = mainmenu(userName);
 
+                // if a pressed then navigates to beginner level
+                if (levelselection == "a")
+                {
+                    // navigates to beginner level
+                    CheckAnswers(userName, begQuestions, begAnswers, " Beginner");
+
+                }
+
+                // if b pressed then navigates to intermediate level
+                else if (levelselection == "b")
+
+                {
+                    // navigates to intermediate level
+                    CheckAnswers(userName, intQuestions, intAnswers, " Intermediate");
+
+                }
+
+                // if c pressed then navigates to advanced level
+                else if (levelselection == "c")
+
+                {
+                    // navigates to advanced level
+                    CheckAnswers(userName, advQuestions, advAnswers, " Advanced");
+
+                }
+
+                redo = Redo(userName);
             }
-
-            // if b pressed then navigates to intermediate level
-            else if (levelselection == "b")
-
-            {
-                // navigates to intermediate level
-               // CheckAnswers(userName, intQuestions, intAnswers);//
-
-            }
-
-            // if c pressed then navigates to advanced level
-            else if (levelselection == "c")
-
-            {
-                // navigates to advanced level
-               // CheckAnswers(userName, advQuestions, advAnswers);/
-
-            }
-
         }
+
+
 
 
         // calls mainmenu method while parsing the users name
@@ -96,7 +105,7 @@ namespace maoriquiz_
 
         {
             // clears console visually
-            //Console.Clear();
+            Console.Clear();
 
             // welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
@@ -112,118 +121,113 @@ namespace maoriquiz_
                 levelselection = Console.ReadLine();
 
             }
+
             return levelselection;
 
-        }     
-            // calls beginner method whilst parsing users name
-            static void CheckAnswers(string userName, string[] questions, string[] answers, string level)
+        }
+        // calls beginner method whilst parsing users name
+        static void CheckAnswers(string userName, string[] questions, string[] answers, string level)
+        {
+
+            //ensures the points reset to 0 if user decides to redo the quiz
+            points = 0;
+
+            //clears console visually
+            Console.Clear();
+
+            //informs the viewer they have chosen the beginner level
+            Console.WriteLine("you have chosen the" + level + " level");
+
+            //begins loop for beginner questions
+            for (int i = 0; i < questions.Length; i++)
             {
-            
-                //ensures the points reset to 0 if user decides to redo the quiz
-                points = 0;
+                //gives user time to read console info
+                Thread.Sleep(2000);
 
                 //clears console visually
                 Console.Clear();
 
-                //informs the viewer they have chosen the beginner level
-                Console.WriteLine("you have chosen the" +  level + " level");
+                //displays the question from the array
+                Console.WriteLine(questions[i] + "\n");
 
-                //begins loop for beginner questions
-                for (int i = 0; i < questions.Length; i++)
+                //reads what the user inputted
+                string useranswer = Console.ReadLine().ToLower();
+
+                // validates the code, if any level besides a, b, or c is pressed then comes up as error
+                while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
                 {
+                    Console.WriteLine("please enter valid level - (a, b, c, or d)");
+                    useranswer = Console.ReadLine().ToLower();
+
+                }
+
+                // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
+                if (string.IsNullOrEmpty(useranswer))
+                {
+                    Console.WriteLine("please enter a valid answer");
+                    useranswer = Console.ReadLine().ToLower();
+                }
+
+
+                //if answer is correct as per parallel array, then prompts user saying that they are correct
+                if (useranswer == answers[i])
+                {
+                    //adds one point to the users total points for the level
+                    points++;
+
+                    //displays that user is correct
+                    Console.WriteLine("\ncongratulations! you're right :)");
+
+
                     //gives user time to read console info
-                    Thread.Sleep(2000);
-
-                    //clears console visually
-                    Console.Clear();
-
-                    //displays the question from the array
-                    Console.WriteLine(questions[i] + "\n");
-
-                    //reads what the user inputted
-                    string useranswer = Console.ReadLine().ToLower();
-
-                    // validates the code, if any level besides a, b, or c is pressed then comes up as error
-                    while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
-                    {
-                        Console.WriteLine("please enter valid level - (a, b, c, or d)");
-                        useranswer = Console.ReadLine().ToLower();
-
-                    }
-
-                    // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
-                    if (string.IsNullOrEmpty(useranswer))
-
-                    {
-                        Console.WriteLine("please enter a valid answer");
-                        useranswer = Console.ReadLine().ToLower();
-                    }
-
-
-                    //if answer is correct as per parallel array, then prompts user saying that they are correct
-                    if (useranswer == answers[i])
-                    {
-                        //adds one point to the users total points for the level
-                        points++;
-
-                        //displays that user is correct
-                        Console.WriteLine("\ncongratulations! you're right :)");
-
-
-                        //gives user time to read console info
-                        Thread.Sleep(1000);
-                    }
-
-                    //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
-                    else
-                    {
-                        Console.WriteLine("\noh no! you're wrong :(");
-
-
-
-                        //gives user time to read console info
-                        Thread.Sleep(1000);
-                    }
-
-                    //displays points for user
-                    Console.WriteLine("\nyour current score is:" + points + "/" + questions.Length + "");
-                    
-                    //end of level method
-
+                    Thread.Sleep(1000);
                 }
 
-                static void redo(string userName, string[] begQuestions, string[] begAnswers, string[] intQuestions, string[] intAnswers, string[] advQuestions, string[] advAnswers)
+                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                else
                 {
-                    //stores the input which will be received by the user regarding whether they want to redo the quiz
-                    string redoquizans;
-
-                    //clears console for the viewer
-                    Console.Clear();
-
-                    //informs the user what their final score was
-                    Console.WriteLine("" + userName + ", your final score was " + points + "!");
-
-                    //asks user if they would like to redo the quiz
-                    Console.WriteLine("would you like to redo quiz?\n\na.) yes\nb.) no");
-
-                    //tells program that the variable which the user inputs should be stored in the "redoquizans" string
-                    redoquizans = Console.ReadLine().ToLower();
+                    Console.WriteLine("\noh no! you're wrong :(");
 
 
-                    //if user would like to redo the quiz, they will type "a" and that will lead them to the main menu where they can choose which level they would like to do
-                    if (redoquizans == "a")
-                    {
-                       // mainmenu(userName,);//
 
-                    }
-                    //if user would not like to redo the quiz, they will type "b" and that will prompt them a message thanking them for playing the quiz
-                    if (redoquizans == "b")
-                    {
-                        Console.WriteLine("thank you" + userName + "for playing Vatsal's Te Reo Maori Quiz! Have a great day :>");
-
-                    }
+                    //gives user time to read console info
+                    Thread.Sleep(1000);
                 }
 
+                //displays points for user
+                Console.WriteLine("\nyour current score is:" + points + "/" + questions.Length + "");
+
+
+                //end of level method
+
+            }
+
+        }
+        static bool Redo(string userName)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Hello " + userName + " your final score was " + points + "/10!");
+
+            Console.WriteLine("Would you like to redo the quiz?\n\na.) Yes\nb.) No");
+
+            string redo = Console.ReadLine().ToLower();
+
+            while (string.IsNullOrEmpty(redo) || (redo != "yes" && redo != "no"))
+            {
+                Console.WriteLine("Please enter 'yes' to redo or 'no' to exit.");
+                redo = Console.ReadLine().ToLower();
+            }
+
+            if (redo == "no")
+            {
+                Console.WriteLine($"Thank you" +userName+ ", for playing Vatsal's Te Reo Maori Quiz! Have a great day!");
+                return false; // Return false to exit the loop in the Main method
+            }
+            else if (redo == "yes")
+            {
+                return true; // Return true to continue the loop in the Main method and return to the main menu
             }
         }
     }
+}
