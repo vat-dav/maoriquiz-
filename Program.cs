@@ -1,7 +1,4 @@
-﻿using System.Net.Security;
-using System.Reflection.Metadata.Ecma335;
-
-namespace maoriquiz_
+﻿namespace maoriquiz_
 {
     internal class Program
     {
@@ -208,7 +205,6 @@ namespace maoriquiz_
                 Console.WriteLine("\nyour current score is:" + points + "/" + questions.Length + "");
 
                 //end of CheckAnswers method
-
             }
 
         }
@@ -219,6 +215,17 @@ namespace maoriquiz_
 
             // informs user of their final score
             Console.WriteLine("Hello " + userName + " your final score was " + points + "/10!");
+
+            if (points >= 7)
+            {
+                Console.WriteLine("Good Job " + userName + " you scored a nice score!");
+
+            }
+            if (points <= 6)
+            {
+                Console.WriteLine("Unlucky " + userName + " you scored an average score, but you should try again to improve");
+
+            }
 
             // asks user if they would like to redo quiz
             Console.WriteLine("Would you like to redo the quiz?\n\na.) Yes\nb.) No");
@@ -232,7 +239,7 @@ namespace maoriquiz_
                 // informs the user that they need to enter "yes" or "no," and what that will lead to
                 Console.WriteLine("Please type 'yes' to redo or 'no' to leave the quiz.");
 
-                // rwads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
+                // reads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
                 redo = Console.ReadLine().ToLower();
             }
 
@@ -240,7 +247,7 @@ namespace maoriquiz_
             if (redo == "no")
             {
                 // thanks the user for partaking in the quiz, and tells them to have a great day
-                Console.WriteLine("Thank you" +userName+ ", for playing Vatsal's Te Reo Maori Quiz! Have a great day!");
+                Console.WriteLine("Thank you " +userName+ ", for playing Vatsal's Te Reo Maori Quiz! Have a great day!");
                 
                 // return = false
                 return false; 
