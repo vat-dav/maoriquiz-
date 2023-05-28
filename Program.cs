@@ -1,13 +1,14 @@
-﻿namespace maoriquiz_
+﻿using System.Net.Security;
+
+namespace maoriquiz_
 {
     internal class Program
     {
         //globally declares point as a static variable
-        static int points;
+        static int points, level;
 
         static void Main(string[] args)
         {
-
             bool redo = true;
             
             // array with Beginner Questions
@@ -32,6 +33,8 @@
             // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
+            Console.ForegroundColor= ConsoleColor.DarkCyan;
+
             // welcomes user to quiz and provides information regarding how the questions will be asked, and how to answer them
             Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
 
@@ -54,7 +57,7 @@
             while (string.IsNullOrEmpty(userName))
             {
                 // informs user to enter a name between 1-25 characters
-                Console.WriteLine("please enter a name between 1-25 letters");
+                Console.WriteLine("Please enter a name between 1-25 letters");
                 
                 // reads what the user inputted and stores it as a variable by the name "userName"
                 userName = Console.ReadLine();
@@ -64,7 +67,7 @@
             while (userName.Length >= 25)
             {
                 // informs user to enter a name between 1-25 characters
-                Console.WriteLine("please enter a name between 1-25 letters");
+                Console.WriteLine("Please enter a name between 1-25 letters");
 
                 // reads what the user inputted and stores it as a variable by the name "userName"
                 userName = Console.ReadLine();
@@ -114,6 +117,8 @@
             // clears console visually
             Console.Clear();
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
             // welcomes viewer again using name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
 
@@ -127,7 +132,7 @@
             while (!levelselection.Equals("a") && !levelselection.Equals("b") && !levelselection.Equals("c"))
             {
                 // informs user to enter a valid level answer
-                Console.WriteLine("please enter valid level - (a, b, or c)");
+                Console.WriteLine("Please enter valid level - (a, b, or c)");
                 
                 // reads what user inputted, and stores it as a variable called "levelselection"
                 levelselection = Console.ReadLine();
@@ -149,11 +154,13 @@
             Console.Clear();
 
             // informs the viewer what level they have chosen
-            Console.WriteLine("you have chosen the" + level + " level");
+            Console.WriteLine("You have chosen the" + level + " level");
 
             // begins loop for questions (whatever level the user has selected)
             for (int i = 0; i < questions.Length; i++)
             {
+                Console.ForegroundColor= ConsoleColor.DarkCyan;
+
                 // gives user time to read console info
                 Thread.Sleep(2000);
 
@@ -169,23 +176,28 @@
                 // validates the code, if any answer besides a, b, c, or d is pressed then comes up as error
                 while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
                 {
+                    Console.ForegroundColor= ConsoleColor.Yellow;
+
                     // informs user to input a valid answer
-                    Console.WriteLine("please enter valid answer - (a, b, c, or d)");
+                    Console.WriteLine("Please enter valid answer - (a, b, c, or d)");
 
                     // reads what the user inputted and stores it as a variable to be able to check if it is correct, also changing the casing to lowercase to ensure the user is correct if answered in caps
                      useranswer = Console.ReadLine().ToLower();
 
                 }
 
-
                 //if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (useranswer == answers[i])
                 {
                     //adds one point to the users total points for the level
                     points++;
-
+                    
+                    Console.ForegroundColor= ConsoleColor.Green;
+                    
                     //displays that user is correct
-                    Console.WriteLine("\ncongratulations! you're correct");
+                    Console.WriteLine("\nCongratulations! You're correct");
+
+                    
 
                     //gives user time to read console info
                     Thread.Sleep(1000);
@@ -194,15 +206,17 @@
                 //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
+                    Console.ForegroundColor= ConsoleColor.Red;
+
                     // informs the user that they are incorrect
-                    Console.WriteLine("\nunfortunately, you're incorrect, better luck next time");
+                    Console.WriteLine("\nUnfortunately, you're incorrect, better luck next time");
 
                     //gives user time to read console info
                     Thread.Sleep(1000);
                 }
 
                 //displays points for user
-                Console.WriteLine("\nyour current score is:" + points + "/" + questions.Length + "");
+                Console.WriteLine("\nYour current score is:" + points + "/" + questions.Length + "");
 
                 //end of CheckAnswers method
             }
@@ -213,24 +227,32 @@
             // clears console visually
             Console.Clear();
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
             // informs user of their final score
-            Console.WriteLine("Hello " + userName + " your final score was " + points + "/10!");
+            Console.WriteLine("Hello " + userName + " your final score was " + points + "/10!\n\n");
 
-            if (points >= 7)
+            if (points > 5)
             {
-                Console.WriteLine("Good Job " + userName + " you scored a nice score!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                
+                Console.WriteLine("Good Job " + userName + " you passed the quiz!\n\nHey "+userName+" you should try a harder level!");
 
             }
-            if (points <= 6)
+            if (points <= 5)
             {
-                Console.WriteLine("Unlucky " + userName + " you scored an average score, but you should try again to improve");
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Unlucky " + userName + " you failed the quiz, but you should try again to improve your score!");
 
             }
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // asks user if they would like to redo quiz
-            Console.WriteLine("Would you like to redo the quiz?\n\na.) Yes\nb.) No");
+            Console.WriteLine("\n\nWould you like to try another level?\n\na.) Yes\nb.) No");
 
-            // rwads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
+            // reads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
             string redo = Console.ReadLine().ToLower();
 
             // while the users input is null or empty or not "yes" or "no," the user will be informed to answer "yes" or "no"
