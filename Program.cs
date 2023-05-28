@@ -33,6 +33,7 @@ namespace maoriquiz_
             // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
+            // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor= ConsoleColor.DarkCyan;
 
             // welcomes user to quiz and provides information regarding how the questions will be asked, and how to answer them
@@ -117,6 +118,7 @@ namespace maoriquiz_
             // clears console visually
             Console.Clear();
 
+            // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // welcomes viewer again using name to the main menu
@@ -131,6 +133,9 @@ namespace maoriquiz_
             // validates the code, if any level besides a, b, or c is pressed then comes up as error
             while (!levelselection.Equals("a") && !levelselection.Equals("b") && !levelselection.Equals("c"))
             {
+                // changes visual colour of text to yellow because it links to colour theory as if there is something wrong, an error
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
                 // informs user to enter a valid level answer
                 Console.WriteLine("Please enter valid level - (a, b, or c)");
                 
@@ -159,6 +164,7 @@ namespace maoriquiz_
             // begins loop for questions (whatever level the user has selected)
             for (int i = 0; i < questions.Length; i++)
             {
+                // changes visual colour of text to dark cyan because it is a popular, much loved colour
                 Console.ForegroundColor= ConsoleColor.DarkCyan;
 
                 // gives user time to read console info
@@ -176,6 +182,7 @@ namespace maoriquiz_
                 // validates the code, if any answer besides a, b, c, or d is pressed then comes up as error
                 while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
                 {
+                    // changes visual colour of text to yellow because it links to colour theory as if there is something wrong, an error
                     Console.ForegroundColor= ConsoleColor.Yellow;
 
                     // informs user to input a valid answer
@@ -186,39 +193,41 @@ namespace maoriquiz_
 
                 }
 
-                //if answer is correct as per parallel array, then prompts user saying that they are correct
+                // if answer is correct as per parallel array, then prompts user saying that they are correct
                 if (useranswer == answers[i])
                 {
-                    //adds one point to the users total points for the level
+                    // adds one point to the users total points for the level
                     points++;
-                    
+
+                    // changes visual colour of text to green because it links to colour theory, if something is correct or positive it is generally green in colour
                     Console.ForegroundColor= ConsoleColor.Green;
                     
-                    //displays that user is correct
+                    // displays that user is correct
                     Console.WriteLine("\nCongratulations! You're correct");
 
                     
 
-                    //gives user time to read console info
+                    // gives user time to read console info
                     Thread.Sleep(1000);
                 }
 
-                //if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                // if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
                 else
                 {
+                    // changes visual colour of text to red because it links to colour theory, if something is incorrect or negative it is generally red in colour
                     Console.ForegroundColor= ConsoleColor.Red;
 
                     // informs the user that they are incorrect
                     Console.WriteLine("\nUnfortunately, you're incorrect, better luck next time");
 
-                    //gives user time to read console info
+                    // gives user time to read console info
                     Thread.Sleep(1000);
                 }
 
-                //displays points for user
+                // displays points for user
                 Console.WriteLine("\nYour current score is:" + points + "/" + questions.Length + "");
 
-                //end of CheckAnswers method
+                // end of CheckAnswers method
             }
 
         }
@@ -227,6 +236,7 @@ namespace maoriquiz_
             // clears console visually
             Console.Clear();
 
+            // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // informs user of their final score
@@ -234,6 +244,7 @@ namespace maoriquiz_
 
             if (points > 5)
             {
+                // changes visual colour of text to green because it links to colour theory, if something is correct or positive it is generally green in colour
                 Console.ForegroundColor = ConsoleColor.Green;
                 
                 Console.WriteLine("Good Job " + userName + " you passed the quiz!\n\nHey "+userName+" you should try a harder level!");
@@ -241,12 +252,14 @@ namespace maoriquiz_
             }
             if (points <= 5)
             {
+                // changes visual colour of text to red because it links to colour theory, if something is incorrect or negative it is generally red in colour
                 Console.ForegroundColor = ConsoleColor.Red;
 
                 Console.WriteLine("Unlucky " + userName + " you failed the quiz, but you should try again to improve your score!");
 
             }
 
+            // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // asks user if they would like to redo quiz
@@ -269,7 +282,7 @@ namespace maoriquiz_
             if (redo == "no")
             {
                 // thanks the user for partaking in the quiz, and tells them to have a great day
-                Console.WriteLine("Thank you " +userName+ ", for playing Vatsal's Te Reo Maori Quiz! Have a great day!");
+                Console.WriteLine("\nThank you " +userName+ ", for playing Vatsal's Te Reo Maori Quiz! Have a great day!");
                 
                 // return = false
                 return false; 
