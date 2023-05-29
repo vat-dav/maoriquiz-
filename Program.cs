@@ -1,11 +1,10 @@
-﻿// name of quiz
-namespace maoriquiz_
-{
-    internal class Program
+﻿namespace maoriquiz_
+{   internal class Program
     {
         // globally declares point as a static variable
-        static int points, level;
+        static int points;
 
+        // declares main method
         static void Main(string[] args)
         {
             bool redo = true;
@@ -28,21 +27,20 @@ namespace maoriquiz_
             // array with Advanced level Answers
             string[] advAnswers = { "a", "c", "a", "a", "d", "a", "a", "a", "d", "a" };
 
-
             // unicode for s2 (the emoji)
             string s2_uni = "\u263A";
 
-            // changes visual colour of text to dark cyan because it is a popular, much loved colour
+            // changes visual colour of text to dark cyan because it is a popular colour
             Console.ForegroundColor= ConsoleColor.DarkCyan;
 
             // welcomes user to quiz and provides information regarding how the questions will be asked, and how to answer them
-            Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
+            Console.WriteLine("Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
 
             // has a delay to let the user read the opening statement
             Thread.Sleep(1000);
 
             // friendly opening to quiz
-            Console.WriteLine($"\nEnjoy " + s2_uni + " !");
+            Console.WriteLine("\nEnjoy " + s2_uni + " !");
 
             // gives user time to process information slowly
             Thread.Sleep(1500);
@@ -111,20 +109,20 @@ namespace maoriquiz_
             }
         }
 
-        // calls mainMenu method while passing the users name
+        // declares mainMenu method while passing the users name
         static string mainMenu(string userName)
         {
             // clears console visually
             Console.Clear();
 
-            // changes visual colour of text to dark cyan because it is a popular, much loved colour
+            // changes visual colour of text to dark cyan because it is a popular colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // welcomes user using their name to the main menu
-            Console.WriteLine($"Welcome " + userName + "!");
+            Console.WriteLine("Welcome " + userName + "!");
 
             // asks user for what level they would like to try - Begginner, Intermediate, or Advanced
-            Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\na.) Beginner (a)\nb.) Intermediate (b)\nc.) Advanced (c)\n");
+            Console.WriteLine("\nWhat level would you like try " + userName + "?\n\na.) Beginner (a)\nb.) Intermediate (b)\nc.) Advanced (c)\n");
 
             // if the users input includes caps, this will automatically change it to lowercase so the input can be conducted regardless
             string levelselection = Console.ReadLine().ToLower();
@@ -148,7 +146,7 @@ namespace maoriquiz_
 
             // end of mainMenu method
         }
-        // calls CheckAnswers method whilst passing users name, questions array, answers array, and the level they chose
+        // declares CheckAnswers method whilst passing users name, questions array, answers array, and the level they chose
         static void CheckAnswers(string userName, string[] questions, string[] answers, string level)
         {
 
@@ -164,7 +162,7 @@ namespace maoriquiz_
             // begins loop for questions (whatever level the user has selected)
             for (int i = 0; i < questions.Length; i++)
             {
-                // changes visual colour of text to dark cyan because it is a popular, much loved colour
+                // changes visual colour of text to dark cyan because it is a popular colour
                 Console.ForegroundColor= ConsoleColor.DarkCyan;
 
                 // gives user time to read console info
@@ -216,7 +214,7 @@ namespace maoriquiz_
                     Console.ForegroundColor= ConsoleColor.Red;
 
                     // informs the user that they are incorrect
-                    Console.WriteLine("\nUnfortunately, you're incorrect, the correct answer was " + answers[i] +"\nbetter luck next time");
+                    Console.WriteLine("\nUnfortunately, you're incorrect, the correct answer was '" + answers[i] +"'\n\nbetter luck next time");
 
 
                     // gives user time to read console info
@@ -230,12 +228,13 @@ namespace maoriquiz_
             }
 
         }
+        // declares Redo method whilst passing the users name
         static bool Redo(string userName)
         {
             // clears console visually
             Console.Clear();
 
-            // changes visual colour of text to dark cyan because it is a popular, much loved colour
+            // changes visual colour of text to dark cyan because it is a popular colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // informs user of their final score
@@ -253,7 +252,7 @@ namespace maoriquiz_
             }
 
             // if the users points are less than or equal to 5, the following occurs
-            if (points <= 5)
+            else if (points <= 5)
             {
                 // changes visual colour of text to red because it links to colour theory, if something is incorrect or negative it is generally red in colour
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -263,7 +262,7 @@ namespace maoriquiz_
 
             }
 
-            // changes visual colour of text to dark cyan because it is a popular, much loved colour
+            // changes visual colour of text to dark cyan because it is a popular colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
             // asks user if they would like to redo quiz, gives options - yes, no
