@@ -1,10 +1,9 @@
-﻿using System.Net.Security;
-
+﻿// name of quiz
 namespace maoriquiz_
 {
     internal class Program
     {
-        //globally declares point as a static variable
+        // globally declares point as a static variable
         static int points, level;
 
         static void Main(string[] args)
@@ -23,7 +22,7 @@ namespace maoriquiz_
             // array with Beginner level Answers
             string[] begAnswers = { "a", "b", "a", "c", "d", "a", "a", "b", "a", "d" };
 
-            //array with Intermediate level Answers
+            // array with Intermediate level Answers
             string[] intAnswers = { "a", "a", "b", "a", "b", "b", "c", "a", "a", "a" };
 
             // array with Advanced level Answers
@@ -39,7 +38,7 @@ namespace maoriquiz_
             // welcomes user to quiz and provides information regarding how the questions will be asked, and how to answer them
             Console.WriteLine($"Welcome to Vatsal's Te Reo Maori Quiz, questions will be asked in a multichoice manner (a, b, c, or d.) \nanswer using the associated key to the correct answer.\n");
 
-            // has a delay to let the user read the opening statement, then saying "enjoy!"
+            // has a delay to let the user read the opening statement
             Thread.Sleep(1000);
 
             // friendly opening to quiz
@@ -54,7 +53,7 @@ namespace maoriquiz_
             // declares that the name of the user is what they will enter
             string userName = Console.ReadLine();
 
-            // validation of code, makes sure the user doesn't enter nothing or does a typo, if done though, asks user again till user inputs valid input
+            // while the users name is null or empty, the following occurs - (validation of code)
             while (string.IsNullOrEmpty(userName))
             {
                 // informs user to enter a name between 1-25 characters
@@ -64,7 +63,7 @@ namespace maoriquiz_
                 userName = Console.ReadLine();
             }
 
-            // validation of code, makes sure the user puts in a name between 1-25 letters
+            // while the users name exceeds the 25 character limit, the following occurs - (validation of code)
             while (userName.Length >= 25)
             {
                 // informs user to enter a name between 1-25 characters
@@ -77,9 +76,9 @@ namespace maoriquiz_
             // while redo equals true, the following will be conducted
             while (redo == true)
             {
-                string levelselection = mainmenu(userName);
+                string levelselection = mainMenu(userName);
 
-                // if a pressed then navigates to CheckAnswers method
+                // if a pressed then the following occurs
                 if (levelselection == "a")
                 {
                     // navigates to CheckAnswers method, passing the name of the user, Beginner Questions, Beginner Answers, and the name of the Level.
@@ -87,7 +86,7 @@ namespace maoriquiz_
 
                 }
 
-                // if b pressed then navigates to CheckAnswers method
+                // else if b pressed then the following occurs
                 else if (levelselection == "b")
 
                 {
@@ -96,24 +95,24 @@ namespace maoriquiz_
 
                 }
 
-                // if c pressed then navigates to CheckAnswers method
+                // else if c pressed then the following occurs
                 else if (levelselection == "c")
 
                 {
-                    // navigates to CheckAnswers method, passing the name of the user, Advanced Questions, Advanced Answers, and the name of the Level.
+                    // navigates to CheckAnswers method, passing the name of the user, the Advanced Questions, Advanced Answers, and the name of the Level.
                     CheckAnswers(userName, advQuestions, advAnswers, " Advanced");
 
                 }
 
-                //navigates to Redo method
+                //navigates to Redo method while passing the users name
                 redo = Redo(userName);
 
                 // end of Main method
             }
         }
 
-        // calls mainmenu method while passing the users name
-        static string mainmenu(string userName)
+        // calls mainMenu method while passing the users name
+        static string mainMenu(string userName)
         {
             // clears console visually
             Console.Clear();
@@ -121,16 +120,17 @@ namespace maoriquiz_
             // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
-            // welcomes viewer again using name to the main menu
+            // welcomes user using their name to the main menu
             Console.WriteLine($"Welcome " + userName + "!");
 
-            // asks user for what level they would like to try-BEginner, Intermediate, or Advanced
+            // asks user for what level they would like to try - Begginner, Intermediate, or Advanced
             Console.WriteLine($"\nWhat level would you like try " + userName + "?\n\na.) Beginner (a)\nb.) Intermediate (b)\nc.) Advanced (c)\n");
 
             // if the users input includes caps, this will automatically change it to lowercase so the input can be conducted regardless
             string levelselection = Console.ReadLine().ToLower();
 
-            // validates the code, if any level besides a, b, or c is pressed then comes up as error
+
+            // while any answer besides a, b, or c is pressed then does the following (validates the code) 
             while (!levelselection.Equals("a") && !levelselection.Equals("b") && !levelselection.Equals("c"))
             {
                 // changes visual colour of text to yellow because it links to colour theory as if there is something wrong, an error
@@ -146,9 +146,9 @@ namespace maoriquiz_
             //returns levelselection
             return levelselection;
 
-            // end of mainmenu method
+            // end of mainMenu method
         }
-        // calls CheckAnswers method whilst parsing users name
+        // calls CheckAnswers method whilst passing users name, questions array, answers array, and the level they chose
         static void CheckAnswers(string userName, string[] questions, string[] answers, string level)
         {
 
@@ -179,7 +179,7 @@ namespace maoriquiz_
                 // reads what the user inputted and stores it as a variable to be able to check if it is correct, also changing the casing to lowercase to ensure the user is correct if answered in caps
                 string useranswer = Console.ReadLine().ToLower();
 
-                // validates the code, if any answer besides a, b, c, or d is pressed then comes up as error
+                // while any answer besides a, b, c, or d is pressed then does the following (validates the code) 
                 while (!useranswer.Equals("a") && !useranswer.Equals("b") && !useranswer.Equals("c") && !useranswer.Equals("d"))
                 {
                     // changes visual colour of text to yellow because it links to colour theory as if there is something wrong, an error
@@ -193,7 +193,7 @@ namespace maoriquiz_
 
                 }
 
-                // if answer is correct as per parallel array, then prompts user saying that they are correct
+                // if answer is correct as per parallel array, the following occurs
                 if (useranswer == answers[i])
                 {
                     // adds one point to the users total points for the level
@@ -205,20 +205,19 @@ namespace maoriquiz_
                     // displays that user is correct
                     Console.WriteLine("\nCongratulations! You're correct");
 
-                    
-
                     // gives user time to read console info
                     Thread.Sleep(1000);
                 }
 
-                // if answer is incorrect as per parallel array, then prompts user saying that they are incorrect
+                // else the answer is incorrect as per parallel array, the following occurs
                 else
                 {
                     // changes visual colour of text to red because it links to colour theory, if something is incorrect or negative it is generally red in colour
                     Console.ForegroundColor= ConsoleColor.Red;
 
                     // informs the user that they are incorrect
-                    Console.WriteLine("\nUnfortunately, you're incorrect, better luck next time");
+                    Console.WriteLine("\nUnfortunately, you're incorrect, the correct answer was " + answers[i] +"\nbetter luck next time");
+
 
                     // gives user time to read console info
                     Thread.Sleep(1000);
@@ -242,19 +241,24 @@ namespace maoriquiz_
             // informs user of their final score
             Console.WriteLine("Hello " + userName + " your final score was " + points + "/10!\n\n");
 
+            // if the users points are more than 5, the following occurs
             if (points > 5)
             {
                 // changes visual colour of text to green because it links to colour theory, if something is correct or positive it is generally green in colour
                 Console.ForegroundColor = ConsoleColor.Green;
-                
-                Console.WriteLine("Good Job " + userName + " you passed the quiz!\n\nHey "+userName+" you should try a harder level!");
+
+                // informs user they passed quiz, and that they should try another level
+                Console.WriteLine("Good Job " + userName + " you passed the quiz!\n\nHey "+userName+" you should try another level!");
 
             }
+
+            // if the users points are less than or equal to 5, the following occurs
             if (points <= 5)
             {
                 // changes visual colour of text to red because it links to colour theory, if something is incorrect or negative it is generally red in colour
                 Console.ForegroundColor = ConsoleColor.Red;
 
+                // informs user they failed quiz, and that they should retry
                 Console.WriteLine("Unlucky " + userName + " you failed the quiz, but you should try again to improve your score!");
 
             }
@@ -262,16 +266,16 @@ namespace maoriquiz_
             // changes visual colour of text to dark cyan because it is a popular, much loved colour
             Console.ForegroundColor = ConsoleColor.DarkCyan;
 
-            // asks user if they would like to redo quiz
+            // asks user if they would like to redo quiz, gives options - yes, no
             Console.WriteLine("\n\nWould you like to try another level?\n\na.) Yes\nb.) No");
 
             // reads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
             string redo = Console.ReadLine().ToLower();
 
-            // while the users input is null or empty or not "yes" or "no," the user will be informed to answer "yes" or "no"
+            // while the users input is null or empty or not "yes" or "no," the user will be informed to type "yes" or "no"
             while (string.IsNullOrEmpty(redo) || (redo != "yes" && redo != "no"))
             {
-                // informs the user that they need to enter "yes" or "no," and what that will lead to
+                // informs the user that they need to enter "yes" or "no," and what that will lead to either the main menu or the end of quiz
                 Console.WriteLine("Please type 'yes' to redo or 'no' to leave the quiz.");
 
                 // reads users input, and stores it as a variable named "redo." if it is answered in caps, it will automatically change it to lowercase so it can be accepted  
